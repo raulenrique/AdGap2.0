@@ -1,5 +1,7 @@
 <?php
 
+use Mailgun\Mailgun;
+
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
 switch ($page) {
@@ -7,12 +9,18 @@ switch ($page) {
 		if(isset($_SESSION['contactForm'])){
 			$contactForm = $_SESSION['contactForm'];
 		} else {
-			$_SESSION['contactForm'] = NULL;
+			session_regenerate_id(true);
 			$contactForm = [
 				'name' => "",
 				'email' => "",
 				'subject' => "",
-				'message' => ""
+				'message' => "",
+				'errors'=> [
+					'name' => "",
+					'email' => "",
+					'subject' => "",
+					'message' => ""
+				 ]
 			];
 		}
 		require "classes/HomeView.php";
@@ -31,11 +39,17 @@ switch ($page) {
 	case 'contactForm':
 
 		$_SESSION['contactFormError'] = NULL;
-		$contactForm = [];
+		$contactForm = [
+							'errors' => []
+
+						];
 
 		$expectedVariables = ['name', 'email', 'subject', 'message'];
 
 		foreach ($expectedVariables as $variable) {
+
+			$contactForm['errors'][$variable]="";
+
 			if(isset($_POST[$variable])){
 				$contactForm[$variable] = $_POST[$variable];
 			}else {
@@ -47,32 +61,57 @@ switch ($page) {
 		$error = false;
 
 		if(strlen($contactForm['name']) == 0) {
-			$error = true;
+				  $moviesuggest['errors']['title']= "Enter your first and last name";
+				  $error = true;
 		}
 
 		if(! filter_var($contactForm['email'], FILTER_VALIDATE_EMAIL)){
-			$error = true;
+				  $moviesuggest['errors']['email']= "Please re-enter your e-mail address";
+			      $error = true;
 		}
 
 		if(strlen($contactForm['subject']) == 0) {
-			$error = true;
+				  $moviesuggest['errors']['subject']= "Enter a subject for your message";
+				  $error = true;
 		}
 
 		if(strlen($contactForm['message']) == 0) {
-			$error = true;
+				  $moviesuggest['errors']['message']= "Please include your message";
+				  $error = true;
 		}
 
 		if( $error === true){
 			$_SESSION['contactFormError'] = true;
 			$_SESSION['contactForm'] = $contactForm;
-			header("Location:./");
+			header("Location:./#contactForm");
 			exit();
 		}
-		echo "Successfully sent message.";
+		header("Location:./?page=messageSentSuccess");
+
+		# Instantiate the client.
+		$mg = new Mailgun('key-a9900123a26bc6efb032d856bd67dd68');
+		$domain = "sandboxd2842aacb2ef4e158929328ba8ce797f.mailgun.org";
+
+		# Make the call to the client.
+		$result = $mgClient->sendMessage($domain, array(
+		    'from'    => 'TheAdGap<mailgun@sandboxd2842aacb2ef4e158929328ba8ce797f.mailgun.org>',
+		    'to'      => '<'.$contactForm['email'].'>',
+		    'subject' => 'Thanks for your message about'.$contactForm['subject'],
+		    'text'    => 'Thanks for your message about'.$contactForm['subject']. '. We will review your message shortly and get back to you very soon. Have a gerat day!'
+		));
 		break;
+
+		case 'messageSentSuccess':
+			require "classes/MessageSentSuccessView.php";
+			$view = new MessageSentSuccessView();
+			$view->render();
+			break;
+
+
+
 	
 	default:
 		echo "404";
-		break;
+		
 }
 
