@@ -1,11 +1,4 @@
-<?php 
-$title = "Info for Publishers & Advertisers";
-$page = "info";
-include "master.inc.php";
 
-function content(){
-
-?>   
 
   <div class="wrapper">
    <!-- Advertisers Section -->
@@ -53,6 +46,3 @@ function content(){
         </div>
     </section>
     </div>
-
-<?php 
-}

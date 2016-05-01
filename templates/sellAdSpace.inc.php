@@ -1,11 +1,4 @@
-<?php 
-$title = "List your ad space";
-$page = "sellAdSpace";
-include "master.inc.php";
-
-function content(){
-
-?>   
+  
 
   <div class="wrapper">
    <!-- List an Ad Space -->
@@ -26,5 +19,3 @@ function content(){
     
     </div>
 
-<?php 
-}

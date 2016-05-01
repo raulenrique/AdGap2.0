@@ -1,11 +1,3 @@
-<?php 
-$title = "Register With Us";
-$page = "register";
-include "master.inc.php";
-
-function content(){
-
-?>   
 
   <div class="wrapper">
    <!-- Login -->
@@ -39,6 +31,3 @@ function content(){
     </section>
 
     </div>
-
-<?php 
-}

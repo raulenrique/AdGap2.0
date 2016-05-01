@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>The Ad Gap<?php if ($title) { echo "-" . $title ;} ?></title>
+    <title>The Ad Gap<?php if ($page_title) { echo "-" . $page_title ;} ?></title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -68,7 +68,7 @@
 
 
 <!-- CONTENT  -->
-<?php content (); ?>
+<?php $this->content(); ?>
 
 
     <!-- Footer -->

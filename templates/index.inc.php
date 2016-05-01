@@ -1,11 +1,4 @@
-<?php 
-$title = "Home";
-$page = "index";
-include "master.inc.php";
 
-function content() {
-    global $contactForm;
-?>
 
 <!-- Intro Header -->
     <header class="intro">
@@ -112,45 +105,36 @@ function content() {
     <div id="map"></div> 
      <form action=".\?page=contactForm" method="POST" class="form-horizontal">
 
- <?php 
-
-                if(isset($_SESSION['contactFormError']) && $_SESSION['contactFormError']===true): ?>
-
-                         <!--css danger class  -->
-                         <p class="bg-danger">There are some errors</p>
-                         <?php $_SESSION['contactFormError'] = NULL;?>
-                         
-
-
-                <?php endif; ?>
-
-
-  <div class="form-group">
+  <div class="form-group <?php if($errors['name']): ?> has-error <?php endif; ?>">
     <label for="name" class="col-sm-2 control-label">Name</label>
     <div class="col-sm-10">
       <input type="text" class="form-control" id="name" placeholder="First & Last Name"
       value="<?php echo $contactForm['name']; ?>">
+      <div class="help-block"><?php echo $errors['name']; ?></div>
     </div>
   </div>
-   <div class="form-group">
+    <div class="form-group <?php if($errors['email']): ?> has-error <?php endif; ?>">
     <label for="email" class="col-sm-2 control-label">Email</label>
     <div class="col-sm-10">
       <input type="email" class="form-control" id="email" placeholder="Email Address"
       value="<?php echo $contactForm['email']; ?>">
+      <div class="help-block"><?php echo $errors['email']; ?></div>
     </div>
   </div>
-   <div class="form-group">
+    <div class="form-group <?php if($errors['subject']): ?> has-error <?php endif; ?>">
     <label for="subject" class="col-sm-2 control-label">Subject</label>
     <div class="col-sm-10">
       <input type="text" class="form-control" id="subject" placeholder="Message Subject"
       value="<?php echo $contactForm['subject']; ?>">
+      <div class="help-block"><?php echo $errors['subject']; ?></div>
     </div>
   </div>
-   <div class="form-group">
+    <div class="form-group <?php if($errors['message']): ?> has-error <?php endif; ?>">
     <label for="message" class="col-sm-2 control-label">Message</label>
     <div class="col-sm-10">
      <textarea class="form-control" id="message" placeholder="Please type your message here..." rows="9"
      value="<?php echo $contactForm['message']; ?>"></textarea>
+     <div class="help-block"><?php echo $errors['message']; ?></div>
     </div>
   </div>
   <div class="form-group">
@@ -174,6 +158,3 @@ function content() {
                 </div>
         </div>
     </section>
-
-<?php 
-}

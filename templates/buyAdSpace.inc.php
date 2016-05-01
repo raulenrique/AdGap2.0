@@ -1,11 +1,3 @@
-<?php 
-$title = "Purchase ad space";
-$page = "buyAdSpace";
-include "master.inc.php";
-
-function content(){
-
-?>   
 
     <div class="wrapper">
    <!-- Trending Listings -->
@@ -39,6 +31,3 @@ function content(){
     </section>
 
     </div>
-
-<?php 
-}

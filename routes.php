@@ -7,6 +7,7 @@ switch ($page) {
 		if(isset($_SESSION['contactForm'])){
 			$contactForm = $_SESSION['contactForm'];
 		} else {
+			$_SESSION['contactForm'] = NULL;
 			$contactForm = [
 				'name' => "",
 				'email' => "",
@@ -14,11 +15,19 @@ switch ($page) {
 				'message' => ""
 			];
 		}
-		include "templates/index.inc.php";
+		require "classes/HomeView.php";
+		$view = new HomeView($contactForm);
+		$view->render();
 		break;
+
+
 	case 'info':
-		include "templates/info.inc.php";
+		require "classes/InfoView.php";
+		$view = new InfoView();
+		$view->render();
 		break;
+
+
 	case 'contactForm':
 
 		$_SESSION['contactFormError'] = NULL;
