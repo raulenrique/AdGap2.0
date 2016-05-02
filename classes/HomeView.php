@@ -11,6 +11,7 @@ class HomeView
 	public function render() 
 	{
 		extract($this->data);
+
 		$page = "index";
 		$page_title = "";
 		include "templates/master.inc.php";

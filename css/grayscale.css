@@ -35,6 +35,10 @@ h1 {
     text-transform: none;
 }
 
+input {
+    outline-color: green;
+}
+
 .intro-text {
     background-color: rgba(255,255,255,.3);
 }
@@ -225,6 +229,10 @@ a:focus {
     transition: background .3s ease-in-out;
 }
 
+.fa-angle-double-down {
+    padding-top: 10px;
+}
+
 
 #about .btn-circle, #users .btn-circle, #technology .btn-circle, #advertisersInfo .btn-circle, #technologyInfo .btn-circle{
      border: 2px solid darkseagreen;
@@ -297,11 +305,6 @@ a:focus {
     padding-bottom: 15px; 
 }
 
-/*#map {
-    width: 100%;
-    height: 200px;
-    margin-top: 100px;
-}*/
 
 @media(min-width:769px) {
   
@@ -320,6 +323,8 @@ a:focus {
     .socialMediaButtons {
         width: 100%;
         display: inline-block;
+        padding-top: 6%;
+
     }
 
     ul.banner-social-buttons li {
@@ -374,7 +379,7 @@ ul.banner-social-buttons {
 @media(max-width:768px) {
 
     .socialMediaButtons {
-        margin-top: 10%;
+       
     }
 
     ul.banner-social-buttons li {
@@ -390,11 +395,19 @@ ul.banner-social-buttons {
 
 
         #map, .form-horizontal {
-        height: 400px;
+        height: 100%;
         width: 100%;
         margin-bottom: 25px;
         display: inline-block;
 
+    }
+
+    #map {
+        height: 400px;
+    }
+
+    form {
+        height: 100%;
     }
 
     .btn-default {
@@ -415,14 +428,12 @@ footer p {
 
 ::-moz-selection {
     text-shadow: none;
-    background: #fcfcfc;
-    background: rgba(255,255,255,.2);
+    background:yellow;
 }
 
 ::selection {
     text-shadow: none;
-    background: #fcfcfc;
-    background: rgba(255,255,255,.2);
+    background: yellow;
 }
 
 img::selection {
@@ -433,7 +444,8 @@ img::-moz-selection {
     background: 0 0;
 }
 
-body {
+/*body {
     webkit-tap-highlight-color: rgba(255,255,255,.2);
 }
 
+*/

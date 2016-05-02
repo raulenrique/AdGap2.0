@@ -11,20 +11,20 @@ switch ($page) {
 		} else {
 			session_regenerate_id(true);
 			$contactForm = [
-				'name' => "",
-				'email' => "",
-				'subject' => "",
-				'message' => "",
+				'contactName' => "",
+				'contactEmail' => "",
+				'contactSubject' => "",
+				'contactMessage' => "",
 				'errors'=> [
-					'name' => "",
-					'email' => "",
-					'subject' => "",
-					'message' => ""
+					'contactName' => "",
+					'contactEmail' => "",
+					'contactSubject' => "",
+					'contactMessage' => ""
 				 ]
 			];
 		}
 		require "classes/HomeView.php";
-		$view = new HomeView($contactForm);
+		$view = new HomeView(compact('contactForm'));
 		$view->render();
 		break;
 
@@ -46,41 +46,44 @@ switch ($page) {
 
 						];
 
-		$expectedVariables = ['name', 'email', 'subject', 'message'];
+		$expectedVariables = ['contactName', 'contactEmail', 'contactSubject', 'contactMessage'];
 
 		foreach ($expectedVariables as $variable) {
-
+			
 			$contactForm['errors'][$variable]="";
 
 			if(isset($_POST[$variable])){
+				
 				$contactForm[$variable] = $_POST[$variable];
 			}else {
 				$contactForm[$variable] = "";
 			}
 		}
+		
+		
 		//validating form
 
 		$error = false;
 
-		// if(strlen($contactForm['name']) == 0) {
-		// 		  $contactForm['errors']['title']= "Enter your first and last name";
-		// 		  $error = true;
-		// }
+		if(strlen($contactForm['contactName']) == 0) {
+				  $contactForm['errors']['contactName']= "Enter your first and last name";
+				  $error = true;
+		}
 
-		// if(! filter_var($contactForm['email'], FILTER_VALIDATE_EMAIL)){
-		// 		  $contactForm['errors']['email']= "Please re-enter your e-mail address";
-		// 	      $error = true;
-		// }
+		if(! filter_var($contactForm['contactEmail'], FILTER_VALIDATE_EMAIL)){
+				  $contactForm['errors']['contactEmail']= "Please re-enter your e-mail address";
+			      $error = true;
+		}
 
-		// if(strlen($contactForm['subject']) == 0) {
-		// 		  $contactForm['errors']['subject']= "Enter a subject for your message";
-		// 		  $error = true;
-		// }
+		if(strlen($contactForm['contactSubject']) == 0) {
+				  $contactForm['errors']['contactSubject']= "Enter a subject for your message";
+				  $error = true;
+		}
 
-		// if(strlen($contactForm['message']) == 0) {
-		// 		  $contactForm['errors']['message']= "Please include your message";
-		// 		  $error = true;
-		// }
+		if(strlen($contactForm['contactMessage']) == 0) {
+				  $contactForm['errors']['contactMessage']= "Please include your message";
+				  $error = true;
+		}
 
 		if( $error === true){
 			$_SESSION['contactFormError'] = true;
@@ -88,6 +91,7 @@ switch ($page) {
 			header("Location:./#contactForm");
 			exit();
 		}
+
 		
 		# Instantiate the client.
 		$mg = new Mailgun('key-a9900123a26bc6efb032d856bd67dd68');
@@ -96,12 +100,16 @@ switch ($page) {
 		# Make the call to the client.
 		$result = $mg->sendMessage($domain, array(
 		    'from'    => 'TheAdGap<mailgun@sandboxd2842aacb2ef4e158929328ba8ce797f.mailgun.org>',
-		    'to'      => '<'.$contactForm['email'].'>',
-		    'subject' => 'Thanks for your message about'.$contactForm['subject'],
-		    'text'    => 'Thanks for your message about'.$contactForm['subject']. '. We will review your message shortly and get back to you very soon. Have a gerat day!'
+		    'to'      => '<'.$contactForm['contactEmail'].'>',
+		    'subject' => 'The Ad Gap: Thanks for your message',
+		    'text'    => 'Thanks for your message about '.$contactForm['contactSubject']. '. We will review your message shortly and get back to you very soon. Have a great day!
+		
+
+		
+			The Ad Gap Team.'
 		));
 
-header("Location:./?page=messageSentSuccess");
+		header("Location:./?page=messageSentSuccess");
 
 		break;
 
@@ -112,8 +120,8 @@ header("Location:./?page=messageSentSuccess");
 			break;
 
 
-	default:
-		echo "404";
+		default:
+			echo "404";
 		
 }
 
