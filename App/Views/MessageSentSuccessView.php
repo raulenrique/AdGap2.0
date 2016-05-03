@@ -11,6 +11,6 @@ class MessageSentSuccessView extends TemplateView
 	}
 	protected function content()
 	{
-		include "templates/messageSentSuccess.inc.php";
+		include "templates/messagesentsuccess.inc.php";
 	}
 }

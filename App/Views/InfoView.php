@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Views;
+
 class InfoView extends TemplateView
 {
 	public function render() {

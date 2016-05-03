@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Views;
+
 class HomeView extends TemplateView
 {
 	public function render() 

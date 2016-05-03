@@ -1,5 +1,7 @@
 <?php 
 
+namespace App\Views;
+
 use Mailgun\Mailgun;
 
 abstract class EmailView extends View
