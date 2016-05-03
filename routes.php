@@ -1,11 +1,9 @@
 <?php
 
-use Mailgun\Mailgun;
-
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
 switch ($page) {
-	case 'home':
+	case "home":
 		if(isset($_SESSION['contactForm'])){
 			$contactForm = $_SESSION['contactForm'];
 		} else {
@@ -23,20 +21,20 @@ switch ($page) {
 				 ]
 			];
 		}
-		require "classes/HomeView.php";
+		
 		$view = new HomeView(compact('contactForm'));
 		$view->render();
 		break;
 
 
-	case 'info':
-		require "classes/InfoView.php";
+	case "info":
+		
 		$view = new InfoView();
 		$view->render();
 		break;
 
 
-	case 'contactForm':
+	case "contactForm":
 
 
 		$_SESSION['contactFormError'] = NULL;
@@ -92,29 +90,25 @@ switch ($page) {
 			exit();
 		}
 
-		
-		# Instantiate the client.
-		$mg = new Mailgun('key-a9900123a26bc6efb032d856bd67dd68');
-		$domain = "sandboxd2842aacb2ef4e158929328ba8ce797f.mailgun.org";
+		//form is valid so redirect the user to a success pgae
+		//header("Location:./?page=messageSentSuccess");
 
-		# Make the call to the client.
-		$result = $mg->sendMessage($domain, array(
-		    'from'    => 'TheAdGap<mailgun@sandboxd2842aacb2ef4e158929328ba8ce797f.mailgun.org>',
-		    'to'      => '<'.$contactForm['contactEmail'].'>',
-		    'subject' => 'The Ad Gap: Thanks for your message',
-		    'text'    => 'Thanks for your message about '.$contactForm['contactSubject']. '. We will review your message shortly and get back to you very soon. Have a great day!
+		//send email to the person sending the message
 		
+		$messageSender = new MessageSenderView($contactForm);
+		$messageSender->render();
 
+		//send email to the host
 		
-			The Ad Gap Team.'
-		));
+		$hostEmail = new HostEmailView($contactForm);
+		$hostEmail->render();
 
-		header("Location:./?page=messageSentSuccess");
+		exit();
 
 		break;
 
-		case 'messageSentSuccess':
-			require "classes/MessageSentSuccessView.php";
+		case "messageSentSuccess":
+			
 			$view = new MessageSentSuccessView();
 			$view->render();
 			break;

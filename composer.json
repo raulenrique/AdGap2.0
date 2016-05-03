@@ -1,5 +1,8 @@
 {
     "require": {
         "mailgun/mailgun-php": "^1.8"
-    }
+    },
+    "autoload": {
+   	"psr-4":{"":"classes/"}
+   }
 }
