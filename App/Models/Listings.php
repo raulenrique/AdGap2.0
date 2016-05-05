@@ -29,7 +29,7 @@ class Listings
 
 		$db = self::getDatabaseConnection();
 
-		$statement = $db->prepare("SELECT id, title, currentPrice, auctionEndDate, auctionEndTime, auctionListDate, auctionListTime, location, description FROM listings;");
+		$statement = $db->prepare("SELECT id, category, title, currentPrice, auctionEndDateTime, auctionStartDateTime, location, description FROM listings;");
 		$statement->execute();
 
 		$record = $statement->fetch(PDO::FETCH_ASSOC);
