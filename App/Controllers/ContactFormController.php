@@ -46,23 +46,23 @@ class ContactFormController
 		//validating form
 		$valid = true;
 
-		if(strlen($contactForm['contactName']) == 0) {
-				  $contactForm['errors']['contactName']= "Enter your first and last name";
+		if(strlen($this->$contactForm['contactName']) == 0) {
+				  $this->$contactForm['errors']['contactName']= "Enter your first and last name";
 				  $valid = false;
 		}
 
-		if(! filter_var($contactForm['contactEmail'], FILTER_VALIDATE_EMAIL)){
-				  $contactForm['errors']['contactEmail']= "Please re-enter your e-mail address";
+		if(! filter_var($this->$contactForm['contactEmail'], FILTER_VALIDATE_EMAIL)){
+				  $this->$contactForm['errors']['contactEmail']= "Please re-enter your e-mail address";
 			      $valid = false;
 		}
 
-		if(strlen($contactForm['contactSubject']) == 0) {
-				  $contactForm['errors']['contactSubject']= "Enter a subject for your message";
+		if(strlen($this->$contactForm['contactSubject']) == 0) {
+				  $this->$contactForm['errors']['contactSubject']= "Enter a subject for your message";
 				  $valid = false;
 		}
 
-		if(strlen($contactForm['contactMessage']) == 0) {
-				  $contactForm['errors']['contactMessage']= "Please include your message";
+		if(strlen($this->$contactForm['contactMessage']) == 0) {
+				  $this->$contactForm['errors']['contactMessage']= "Please include your message";
 				  $valid = false;
 		}
 		return $valid;
@@ -72,7 +72,7 @@ class ContactFormController
 	{
 		$this->resetSessionData();
 
-		//capture suggester data
+		//capture sender data
 		$this->getFormData();
 
 		//validate form data
@@ -87,12 +87,12 @@ class ContactFormController
 
 		//send email to the person sending the message
 		
-		$messageSender = new MessageSenderView($contactForm);
+		$messageSender = new MessageSenderView($this->$contactForm);
 		$messageSender->render();
 
 		//send email to the host
 		
-		$hostEmail = new HostEmailView($contactForm);
+		$hostEmail = new HostEmailView($this->$contactForm);
 		$hostEmail->render();
 
 

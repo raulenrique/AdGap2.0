@@ -31,6 +31,6 @@ class HomeController
 				 ]
 			];
 		}
-		return $moviesuggest;
+		return $contactForm;
 	}
 }

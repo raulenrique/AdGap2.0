@@ -53,8 +53,9 @@
                         <a href="#page-top"></a>
                     </li>
                    <li<?php if ($page === "index"): ?> class="active" <?php endif ;?>><a href=".\">Home</a></li>
-                   <li<?php if ($page === "buyAdSpace"): ?> class="active" <?php endif ;?>><a href=".\?page=buyAdSpace">Buy AdSpace</a></li>
-                   <li<?php if ($page === "sellAdSpace"): ?> class="active" <?php endif ;?>><a href=".\?page=sellAdSpace">Sell Ad Space</a></li> 
+                  {{--  <li<?php if ($page === "buyAdSpace"): ?> class="active" <?php endif ;?>><a href=".\?page=buyAdSpace">Buy AdSpace</a></li>
+                   <li<?php if ($page === "sellAdSpace"): ?> class="active" <?php endif ;?>><a href=".\?page=sellAdSpace">Sell Ad Space</a></li>  --}}
+                   <li<?php if ($page === "listings"): ?> class="active" <?php endif ;?>><a href=".\?page=listings">Listings</a></li>
                     <li<?php if ($page === "info"): ?> class="active" <?php endif ;?>><a href=".\?page=info">Info</a></li>
                      <li<?php if ($page === "register"): ?> class="active" <?php endif ;?>><a href=".\?page=register">Register</a></li>              
                          

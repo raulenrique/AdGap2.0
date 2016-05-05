@@ -1,5 +1,7 @@
 <?php 
 
+namespace App\Views;
+
 class HostEmailView extends EmailView
 
 {

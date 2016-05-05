@@ -1,5 +1,7 @@
 <?php 
 
+namespace App\Views;
+
 class MessageSenderView extends EmailView
 
 {

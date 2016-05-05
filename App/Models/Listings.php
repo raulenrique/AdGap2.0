@@ -1,0 +1,47 @@
+<?php
+
+namespace App\Models;
+
+use PDO;
+
+class Listings
+{
+	public $data;
+
+	private static $db;
+
+	private static function getDatabaseConnection() 
+	{
+		if (! self::$db) {
+			$dsn = 'mysql:host=localhost;dbname=theadgap;charset=utf8';
+			self::$db = new PDO($dsn, 'root', '');
+
+			self::$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			self::$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+		}
+		return self::$db;
+
+		
+	}
+	public static function all()
+	{
+		$models = [];
+
+		$db = self::getDatabaseConnection();
+
+		$statement = $db->prepare("SELECT id, title, currentPrice, auctionEndDate, auctionEndTime, auctionListDate, auctionListTime, location, description FROM listings;");
+		$statement->execute();
+
+		$record = $statement->fetch(PDO::FETCH_ASSOC);
+
+		while($record = $statement->fetch(PDO::FETCH_ASSOC)){
+			$model = new Listings();
+			$model->data = $record;
+			array_push($models, $model);
+
+		}
+		
+		return $models;
+		// var_dump($models);
+	}
+}

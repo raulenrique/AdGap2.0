@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Views\MovieSuggestSuccessView;
+use App\Views\MessageSentSuccessView;
 
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
@@ -10,6 +10,12 @@ switch ($page) {
 	case "home":
 		
 		$controller = new HomeController();
+		$controller->show();
+		break;
+
+	case "listings":
+		
+		$controller = new ListingsController();
 		$controller->show();
 		break;
 
