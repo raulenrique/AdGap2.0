@@ -21,16 +21,19 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>All Listings</h2>
-                <p><?php
+                <?php
 			foreach($listings as $listing):?>
-				<h2><?= $listing->title; ?></h2>
-				<p><?= $listing->id; ?></p>
-				<p><?= $listing->currentPrice; ?></p>
-				<p><?= $listing->auctionEndDate; ?><?= $listing->auctionEndTime; ?></p>
-				<p><?= $listing->auctionListDate; ?><?= $listing->auctionListTime; ?></p>
-				<p><?= $listing->location; ?></p>
-				<p><?= $listing->description; ?></p>
-			<?php endforeach; ?><p>
+				<ul class="listings">
+                <h2><?= $listing->id; ?></h2>
+               <li><?= $listing->category; ?></li>
+				<li><?= $listing->title; ?></li>
+				<li><?= $listing->currentPrice; ?></li>
+				<li><?= $listing->auctionEndDateTime; ?></li>
+				<li><?= $listing->auctionStartDateTime; ?></li>
+				<li><?= $listing->location; ?></li>
+				<li><?= $listing->description; ?></li>
+                </ul>
+			<?php endforeach; ?>
                  <a href="#technologyInfo" class="btn btn-circle page-scroll">
                     <i class="fa fa-angle-double-down animated"></i>
                 </a>

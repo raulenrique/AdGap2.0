@@ -20,9 +20,10 @@ try {
 }
 
 try {
-	$statement = $test->prepare("INSERT INTO listings (id, category, title, currentPrice, auctionEndDateTime, auctionStartDateTime, location, description) VALUES (:id, :category, :title, :currentPrice, :auctionEndDateTime, :auctionStartDateTime, :location, :description);");
+	$statement = $test->prepare("INSERT INTO listings (id, category, title, currentPrice, auctionEndDateTime, auctionStartDateTime, location, description) VALUES (:id, :category, :title, :currentPrice, :auctionEndDateTime, :auctionStartDateTime, :location, :description)");
+
 	if ($handle = fopen("listings.csv", "r")) {
-		while ($row = fgetcsv($handle, 0, ",")){
+		while ($row = fgetcsv($handle, 0, "," )){
 			$statement->bindValue(":id", $row[0]);
 			$statement->bindValue(":category", $row[1]);
 			$statement->bindValue(":title", strtitle($row[2]));

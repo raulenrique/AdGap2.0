@@ -10,6 +10,7 @@ class ListingsController
 	public function show()
 	{
 		$listings = Listings::all();
+		
 		$view = new ListingsView(['listings' => $listings]);
 		$view->render();
 	}

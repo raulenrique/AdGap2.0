@@ -61,6 +61,13 @@ p {
 }
 
 
+.listings li {
+    display: inline;
+     list-style-type: none;
+     color: green;
+}
+
+
 
 @media(min-width:768px) {
     p {
