@@ -101,40 +101,40 @@
                 </p>
             </div>
             <!-- Map Section -->
-            
+          
     <div id="map"></div> 
      <form action=".\?page=contactForm" id="contactForm" method="POST" class="form-horizontal">
 
-  <div class="form-group <?php if($contactForm['errors']['contactName']): ?> has-error <?php endif; ?>">
+  <div class="form-group <?php if($errors['contactName']): ?> has-error <?php endif; ?>">
     <label for="name" class="col-sm-2 control-label">Name</label>
     <div class="col-sm-10">
       <input type="text" class="form-control" id="name" name="contactName" placeholder="First & Last Name"
-      value="<?php echo $contactForm['contactName']; ?>">
-      <div class="help-block"><?php echo $contactForm['errors']['contactName']; ?></div>
+      value="<?php echo $contactName; ?>">
+      <div class="help-block"><?php echo $errors['contactName']; ?></div>
     </div>
   </div>
-    <div class="form-group <?php if($contactForm['errors']['contactEmail']): ?> has-error <?php endif; ?>">
+    <div class="form-group <?php if($errors['contactEmail']): ?> has-error <?php endif; ?>">
     <label for="email" class="col-sm-2 control-label">Email</label>
     <div class="col-sm-10">
       <input type="email" class="form-control" id="email" name="contactEmail" placeholder="Email Address"
-      value="<?php echo $contactForm['contactEmail']; ?>">
-      <div class="help-block"><?php echo $contactForm['errors']['contactEmail']; ?></div>
+      value="<?php echo $contactEmail; ?>">
+      <div class="help-block"><?php echo $errors['contactEmail']; ?></div>
     </div>
   </div>
-    <div class="form-group <?php if($contactForm['errors']['contactSubject']): ?> has-error <?php endif; ?>">
+    <div class="form-group <?php if($errors['contactSubject']): ?> has-error <?php endif; ?>">
     <label for="subject" class="col-sm-2 control-label">Subject</label>
     <div class="col-sm-10">
       <input type="text" class="form-control" id="subject" name="contactSubject" placeholder="Message Subject"
-      value="<?php echo $contactForm['contactSubject']; ?>">
-      <div class="help-block"><?php echo $contactForm['errors']['contactSubject']; ?></div>
+      value="<?php echo $contactSubject; ?>">
+      <div class="help-block"><?php echo $errors['contactSubject']; ?></div>
     </div>
   </div>
-    <div class="form-group <?php if($contactForm['errors']['contactMessage']): ?> has-error <?php endif; ?>">
+    <div class="form-group <?php if($errors['contactMessage']): ?> has-error <?php endif; ?>">
     <label for="message" class="col-sm-2 control-label">Message</label>
     <div class="col-sm-10">
      <textarea class="form-control" id="message" name="contactMessage" placeholder="Please type your message here..." rows="9"
-     value="<?php echo $contactForm['contactMessage']; ?>"></textarea>
-     <div class="help-block"><?php echo $contactForm['errors']['contactMessage']; ?></div>
+     value="<?php echo $contactMessage; ?>"></textarea>
+     <div class="help-block"><?php echo $errors['contactMessage']; ?></div>
     </div>
   </div>
   <div class="form-group">

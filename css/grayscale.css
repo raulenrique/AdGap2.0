@@ -30,6 +30,10 @@ h6 {
     letter-spacing: 1px;
 }
 
+h3 {
+    margin: 25px 0 0 0; /*top left right bottom*/
+}
+
 h1 {
     background-color: #6BAA84;
     text-transform: none;
@@ -51,22 +55,41 @@ p {
 }
 
 
-#about, #users, #technology, #advertisersInfo, #technologyInfo {
+#about, #users, #technology, #advertisersInfo, #technologyInfo, #individualListing, #allListings, #createListing {
     background-color: #B0BEA9;
     color: #fff;
 }
 
+
+#listingsHeader {
+    background-color: black;
+    color: white;
+}
+
+
+
 .wrapper {
     margin-top: 90px;
+    width: 100%;
 }
 
+/*.leftListings {
+width: 45%;
+float: left;
+}
+.righttListings {
+width: 45%;
+float: right;
+}*/
 
-.listings li {
-    display: inline;
-     list-style-type: none;
-     color: green;
+
+#individualListing, #allListings {
+    height: 100%;
 }
 
+.listings  {
+    list-style-type: none;
+}
 
 
 @media(min-width:768px) {
@@ -241,7 +264,8 @@ a:focus {
 }
 
 
-#about .btn-circle, #users .btn-circle, #technology .btn-circle, #advertisersInfo .btn-circle, #technologyInfo .btn-circle{
+#about .btn-circle, #users .btn-circle, #technology .btn-circle, #advertisersInfo .btn-circle, #otherListings .btn-circle,
+ #technologyInfo .btn-circle, #individualListing .btn-circle{
      border: 2px solid darkseagreen;
      color: darkseagreen;
 

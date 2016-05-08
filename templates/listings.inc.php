@@ -1,42 +1,37 @@
-
-
-  <div class="wrapper">
-   <!-- Advertisers Section -->
-    <section id="advertisersInfo" class="container content-section text-center">
+<div class="wrapper">
+   <!-- Banner Section -->
+    <section id="listingsHeader" class="container content-section text-center">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
-                <h2>Listings</h2>
-                <p>Grayscale is a free Bootstrap 3 theme created by Start Bootstrap. It can be yours right now, simply download the template on <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
-                <p>This theme features stock photos by <a href="http://gratisography.com/">Gratisography</a> along with a custom Google Maps skin courtesy of <a href="http://snazzymaps.com/">Snazzy Maps</a>.</p>
-                <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with LESS files for easy customization.</p>
-                 <a href="#publishersInfo" class="btn btn-circle page-scroll">
-                    <i class="fa fa-angle-double-down animated"></i>
+             <h2>SAVE BIG TODAY ON ONE OF THESE AWESOME AD SPACES</h2>  
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Publishers Section -->
-        <section id="publishersInfo" class="container content-section text-center">
+    <!-- Display All Listings Section -->
+        <section id="allListings" class="container content-section text-center">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
-                <h2>All Listings</h2>
+             <ol class="breadcrumb">
+                  <li><a href=".\">Home</a></li>
+                  <li class="active">All Listings</a></li>
+                </ol>
+                <p>
+                  <a href=".\?page=listing.create" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Create a Listing</a>
+               </p>
                 <?php
 			foreach($listings as $listing):?>
 				<ul class="listings">
-                <h2><?= $listing->id; ?></h2>
-               <li><?= $listing->category; ?></li>
-				<li><?= $listing->title; ?></li>
-				<li><?= $listing->currentPrice; ?></li>
-				<li><?= $listing->auctionEndDateTime; ?></li>
-				<li><?= $listing->auctionStartDateTime; ?></li>
-				<li><?= $listing->location; ?></li>
-				<li><?= $listing->description; ?></li>
+				<h3><?= $listing->category; ?> $<?= $listing->currentPrice; ?></h3>
+                <li><a href=".\?page=listing&amp;id=<?= $listing->id?>"><?= $listing->title; ?> (<?= $listing->auctionStartDateTime?>)</a></li>
                 </ul>
+
 			<?php endforeach; ?>
-                 <a href="#technologyInfo" class="btn btn-circle page-scroll">
+            
+                 <!-- <a href="#technologyInfo" class="btn btn-circle page-scroll">
                     <i class="fa fa-angle-double-down animated"></i>
-                </a>
+                </a> -->
             </div>
         </div>
     </section>

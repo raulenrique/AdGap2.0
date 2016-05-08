@@ -13,9 +13,9 @@ $emailHeader = [
 
 Hi Team, 
 
-A message has been sent by "<? php echo $contactName;?>". This is regarding "<?php php echo $contactSubject;?>".
+A message has been sent by "<?php echo $contactName;?>". This is regarding "<?php echo $contactSubject;?>".
 Please reply to the below message as soon as you can.
 
 Cheers.
 
-"<?php echo $contactMessage;?>"
+"<?php echo $contactMessage;?>".

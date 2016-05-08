@@ -7,12 +7,12 @@ class MessageSentSuccessView extends TemplateView
 
 	public function render() 
 	{
-		$page = "messageSentSuccess";
+		$page = "contactformsuccess";
 		$page_title = "Message Successfuly sent!";
 		include "templates/master.inc.php";
 	}
 	protected function content()
 	{
-		include "templates/messagesentsuccess.inc.php";
+		include "templates/contactformsuccess.inc.php";
 	}
 }

@@ -2,8 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Views\MessageSentSuccessView;
-
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
 switch ($page) {
@@ -16,8 +14,27 @@ switch ($page) {
 	case "listings":
 		
 		$controller = new ListingsController();
+		$controller->index();
+		break;
+
+	case "listing":
+		
+		$controller = new ListingsController();
 		$controller->show();
 		break;
+
+	case "listing.create":
+		
+		$controller = new ListingsController();
+		$controller->create();
+		break;
+
+	case "listing.store":
+		
+		$controller = new ListingsController();
+		$controller->store();
+		break;
+
 
 	case "info":
 		
@@ -31,11 +48,6 @@ switch ($page) {
 		$controller->show();
 		break;
 
-		case "messageSentSuccess":
-			
-		$view = new MessageSentSuccessView();
-		$view->render();
-		break;
 
 		default:
 			echo "404";
