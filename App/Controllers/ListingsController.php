@@ -27,16 +27,32 @@ class ListingsController
 
 	public function create()
 	{
-		$view = new ListingCreateView();
+		$listing = $this->getFormdata();
+		$view = new ListingCreateView(['listing' => $listing]);
 		$view->render();
 	}
 
 	public function store()
 	{
-		var_dump($_POST);
 		$listing = new Listings($_POST);
-		$Listing->save();
-
+		if (! $listing->isValid()) {
+			$_SESSION['listing.create'] = $listing;
+			header("Location: .\?page=listing.create");
+			exit();
+		}
+		$listing->save();
+		$_SESSION['listing.create'] = null;
+		header("Location: .\?page=listing&id=" . $listing->id);
 	}
 
+	public function getFormdata()
+	{
+		if (isset($_SESSION['listing.create'])) {
+				  $listing = $_SESSION['listing.create'];
+				  unset($_SESSION['listing.create']);
+		} else {
+				$listing = new Listings;
+		}
+		return $listing;
+	}
 }

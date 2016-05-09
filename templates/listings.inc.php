@@ -23,7 +23,7 @@
                 <?php
 			foreach($listings as $listing):?>
 				<ul class="listings">
-				<h3><?= $listing->category; ?> $<?= $listing->currentPrice; ?></h3>
+				<h3><?= $listing->category; ?> $<?= $listing->buyNowPrice; ?></h3>
                 <li><a href=".\?page=listing&amp;id=<?= $listing->id?>"><?= $listing->title; ?> (<?= $listing->auctionStartDateTime?>)</a></li>
                 </ul>
 

@@ -8,7 +8,8 @@ use UnexpectedValueException;
 
 abstract class DatabaseModel
 {
-	public $data;
+	public $data = [];
+	public $errors = [];
 	private static $db;
 
 	public function __construct($input = null)
@@ -117,9 +118,48 @@ abstract class DatabaseModel
 			$statement->bindValue(":" . $column, $this->$column);
 		}
 
-		$statement->execute();
+		$result = $statement->execute();
+		var_dump($result);
+		$this->id =$db->lastInsertId();
+		
+	}
 
-		$this->id = $db->lastInsertId();
+	public function isValid()
+	{
+		$valid = true;
+		foreach (static::$validationRules as $column => $rules) {
+			$this->errors[$column] = null;
+			$rules = explode(",", $rules);
+			foreach ($rules as $rule) {
+				if(strstr($rule, ":")){
+					$rule = explode(":", $rule);
+					$value = $rule[1];
+					$rule = $rule[0];
+				}
+				switch ($rule) {
+					case 'minlength':
+						if(strlen($this->$column) < $value){
+							$valid = false;
+							$this->errors[$column] = "Must be at least $value characters long.";
+						}
+						break;
+					case 'maxlength':
+						if(strlen($this->$column) > $value){
+							$valid = false;
+							$this->errors[$column] = "Must be no more than $value characters long.";
+						}
+						break;
+					case 'numeric':
+						if(! is_int($this->$column)){
+							$valid = false;
+							$this->errors[$column] = "Must be a number.";
+						}
+						break;
+				}
+			}
+			
+		}
+		return $valid;
 	}
 
 public function __get($name)

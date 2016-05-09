@@ -75,7 +75,7 @@ class ContactFormController
 		//capture sender data
 		$this->getFormData();
 
-		//validate form data
+		
 		if(! $this->isFormValid()){
 			$_SESSION['contactForm'] = $this->contactForm;
 			header("Location:./#contactForm");

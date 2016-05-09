@@ -9,11 +9,11 @@ error_reporting(E_ALL);
 // }
 // spl_autoload_register('my_autoloader');
 
+require 'vendor/autoload.php';
+
 session_start();
 session_regenerate_id(true);
 
-require 'vendor/autoload.php';
-
 require "routes.php";
 
-require "databasecreation.php";
+// require "databasecreation.php";
