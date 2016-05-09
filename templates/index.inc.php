@@ -138,7 +138,7 @@
     </div>
   </div>
   <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
+    <div class="socialMediaButtons">
       <button type="submit" class="btn btn-default">Send Message</button>
     </div>
   </div>

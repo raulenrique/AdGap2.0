@@ -14,6 +14,13 @@ abstract class DatabaseModel
 
 	public function __construct($input = null)
 	{
+		if(static::$columns){
+			foreach (static::$columns as $column) {
+				$this->$column = null;
+				$this->errors[$column] = null;
+			}
+		}
+
 		if(is_integer($input) && $input > 0 ){
 			//if input is a number, load that record from the db
 			$this->find($input);
@@ -150,7 +157,7 @@ abstract class DatabaseModel
 						}
 						break;
 					case 'numeric':
-						if(! is_int($this->$column)){
+						if(! is_numeric($this->$column)){
 							$valid = false;
 							$this->errors[$column] = "Must be a number.";
 						}
@@ -162,7 +169,17 @@ abstract class DatabaseModel
 		return $valid;
 	}
 
-public function __get($name)
+	public static function destroy($id)
+	{
+		$db = static::getDatabaseConnection();
+		$query = "DELETE FROM " . static::$tableName . " WHERE id= :id";
+		$statement = $db->prepare($query);
+		$statement->bindValue(':id', $id);
+		$statement->execute();
+
+	}
+
+	public function __get($name)
 	{
 		if (in_array($name, static::$columns)) {
 			

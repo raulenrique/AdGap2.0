@@ -66,7 +66,14 @@ p {
     color: white;
 }
 
+#createlisting {
+    text-align: -webkit-center;
+}
 
+#createListingForm{
+    text-align: center;
+    
+}
 
 .wrapper {
     margin-top: 90px;
@@ -135,7 +142,7 @@ a:focus {
 .navbar-custom .navbar-brand .navbar-toggle {
     padding: 4px 6px;
     font-size: 16px;
-    color: #fff;
+    color: #000;
 }
 
 .navbar-custom .navbar-brand .navbar-toggle:focus,
@@ -144,7 +151,7 @@ a:focus {
 }
 
 .navbar-custom a {
-    color: #fff;
+    color: #000;
 }
 
 .navbar-custom a.top-nav-collapse {
@@ -160,7 +167,7 @@ a:focus {
 
 .navbar-custom .nav li a:hover {
     outline: 0;
-    color: rgba(255,255,255,.8);
+    color: #000;
     background-color: transparent;
 }
 
@@ -179,7 +186,7 @@ a:focus {
 }
 
 .navbar-custom .nav li.active a:hover {
-    color: #fff;
+    color: #000;
 }
 
 @media(min-width:768px) {
@@ -340,10 +347,11 @@ a:focus {
 @media(min-width:769px) {
   
 
-    #map, .form-horizontal {
+    #map, #contactForm {
         width: 48%;
         float: left;
         margin-bottom: 25px;
+        margin-left: 1%;
     }
 
 #map {
@@ -352,7 +360,6 @@ a:focus {
 
 
     .form-horizontal {
-        margin-left: 1%;
         height: 100%;
     }
 
@@ -392,6 +399,7 @@ a:focus {
     border: 1px solid #6BAA84;
     color: #fff;
     background-color: #6BAA84;
+    font-size: 18px;
 }
 
 .btn-default:hover,
@@ -448,8 +456,12 @@ ul.banner-social-buttons {
 
     .btn-default {
         width: 60%;
-        height: 50px
-        font-size 24px;
+        height: 50px;
+        
+    }
+
+    .navbar, .navbar-custom, .navbar-fixed-top {
+        color: black;
     }
 
 }

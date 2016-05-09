@@ -35,6 +35,19 @@ switch ($page) {
 		$controller->store();
 		break;
 
+	case "listing.edit":
+
+		$controller = new ListingsController();
+		$controller->edit();
+
+		break;
+		
+	case "listing.destroy":
+
+		$controller = new ListingsController();
+		$controller->destroy();
+
+		break;	
 
 	case "info":
 		

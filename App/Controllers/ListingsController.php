@@ -41,17 +41,29 @@ class ListingsController
 			exit();
 		}
 		$listing->save();
-		$_SESSION['listing.create'] = null;
 		header("Location: .\?page=listing&id=" . $listing->id);
 	}
 
-	public function getFormdata()
+	public function edit()
+	{
+		$listing = $this->getFormData($_GET['id']);
+		$view = new ListingCreateView(['listing' => $listing]);
+		$view->render();
+	}
+
+	public function destroy()
+	{
+		Listings::destroy($_POST['id']);
+		header("Location: .\?page=listings");
+	}
+
+	public function getFormdata($id=null)
 	{
 		if (isset($_SESSION['listing.create'])) {
 				  $listing = $_SESSION['listing.create'];
 				  unset($_SESSION['listing.create']);
 		} else {
-				$listing = new Listings;
+				$listing = new Listings((int)$id);
 		}
 		return $listing;
 	}
