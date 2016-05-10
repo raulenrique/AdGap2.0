@@ -21,7 +21,7 @@ abstract class DatabaseModel
 			}
 		}
 
-		if(is_integer($input) && $input > 0 ){
+		if(is_numeric($input) && $input > 0 ){
 			//if input is a number, load that record from the db
 			$this->find($input);
 		}
@@ -102,33 +102,71 @@ abstract class DatabaseModel
 
 	public function save()
 	{
+		if($this->id > 0){
+			$this->update();
+		} else {
+			$this->insert();
+		}
+		
+	}
+
+	public function insert()
+	{
 		$db = static::getDatabaseConnection();
 
 		$columns = static::$columns;
 
 		unset($columns[array_search('id', $columns)]);
 
-		$query = "INSERT INTO " . static::$tableName .
-		" (". implode(", ", columns) . ")" .
-		"VALUES (";
+		$query = "INSERT INTO " . static::$tableName . 
+			" (". implode(", ", $columns) . ")" .
+			" VALUES (";
 
 		$insertcols = [];
 		foreach ($columns as $column) {
 			array_push($insertcols, ":" . $column);
 		}
 
-		$query .=implode(",", $insertcols);
+		$query .= implode(", ", $insertcols);
 		$query .= ")";
 
 		$statement = $db->prepare($query);
+
 		foreach ($columns as $column) {
 			$statement->bindValue(":" . $column, $this->$column);
 		}
-
+		
 		$result = $statement->execute();
 		var_dump($result);
 		$this->id =$db->lastInsertId();
 		
+	}
+
+	public function update()
+	{
+		$db = static::getDatabaseConnection();
+
+		$columns = static::$columns;
+
+		unset($columns[array_search('id', $columns)]);
+
+		$query = "UPDATE " . static::$tableName . " SET ";
+
+		$updatecols = [];
+
+		foreach ($columns as $column) {
+			array_push($updatecols, $column . "=:" . $column);
+		}
+		$query .= implode(", ", $updatecols);
+
+		$query .= " WHERE id =:id";
+
+		$statement = $db->prepare($query);
+		var_dump($statement);
+		foreach (static::$columns as $column) {
+			$statement->bindValue(":".$column, $this->$column);
+		}
+		$statement->execute();
 	}
 
 	public function isValid()
@@ -159,7 +197,18 @@ abstract class DatabaseModel
 					case 'numeric':
 						if(! is_numeric($this->$column)){
 							$valid = false;
-							$this->errors[$column] = "Must be a number.";
+							$this->errors[$column] = "Must be a number value.";
+						}
+					case 'email':
+						if(! filter_var($this->$column, FILTER_VALIDATE_EMAIL)){
+							$valid = false;
+							$this->errors[$column] = "Must be a valid email address.";
+						}
+						break;
+					case 'url':
+						if(! filter_var($this->$column,FILTER_VALIDATE_URL)){
+							$valid = false;
+							$this->errors[$column] = "Must be a valid url.";
 						}
 						break;
 				}

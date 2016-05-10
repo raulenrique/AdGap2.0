@@ -51,6 +51,20 @@ class ListingsController
 		$view->render();
 	}
 
+	public function update()
+	{
+		$listing = new Listings($_POST['id']);
+		$listing->processArray($_POST);
+		var_dump($listing);
+		if(! $listing->isValid()){
+			$_SESSION['listing.create'] = $listing;
+			header("Location: .\?page=listing.edit&id=".$_POST['id']);
+			exit();
+		}
+		$listing->save();
+		header("Location: .\?page=listing&id=" . $listing->id);
+	}
+
 	public function destroy()
 	{
 		Listings::destroy($_POST['id']);

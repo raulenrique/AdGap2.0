@@ -17,9 +17,11 @@
                   <li><a href=".\">Home</a></li>
                   <li class="active">All Listings</a></li>
                 </ol>
-                <p>
-                  <a href=".\?page=listing.create" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Create a Listing</a>
-               </p>
+              
+              <p>
+                  <a href=".\?page=listing.create" class="btn btn-default" id="create"><span class="glyphicon glyphicon-plus"></span> Create Listing</a>
+              <p>
+                
                 <?php
 			foreach($listings as $listing):?>
 				<ul class="listings">

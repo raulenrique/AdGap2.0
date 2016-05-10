@@ -126,9 +126,7 @@ a:focus {
 
 .navbar-custom {
     margin-bottom: 0;
-    border-bottom: 1px solid rgba(255,255,255,.3);
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    background-color: #fff;
 }
 
 .navbar-custom .navbar-brand {
@@ -422,9 +420,15 @@ ul.banner-social-buttons {
 
 @media(max-width:768px) {
 
-    .socialMediaButtons {
-       
+    .navbar-custom.top-nav-collapse {
+        background-color: white;
     }
+
+    .navbar-custom {
+        background-color: white;
+        color: black;
+    }
+
 
     ul.banner-social-buttons li {
         display: block;
@@ -446,6 +450,10 @@ ul.banner-social-buttons {
 
     }
 
+    #create {
+        padding-top: 11px;
+    }
+
     #map {
         height: 400px;
     }
@@ -460,9 +468,7 @@ ul.banner-social-buttons {
         
     }
 
-    .navbar, .navbar-custom, .navbar-fixed-top {
-        color: black;
-    }
+  
 
 }
 

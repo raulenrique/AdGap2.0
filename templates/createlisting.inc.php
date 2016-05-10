@@ -1,6 +1,11 @@
 <?php  
-     $errors = $movie->errors; 
-     $verb = ( $movie->id ? "Edit" : "Add");
+     $errors = $listing->errors; 
+     $verb = ( $listing->id ? "Edit" : "Create");
+     if($listing->id){
+      $submitAction = ".\?page=listing.update";
+     } else {
+      $submitAction = ".\?page=listing.store";
+     }
    ?>
 
 <div class="wrapper">
@@ -15,8 +20,11 @@
                   <li class="active">Create A Listing</a></li>
                 </ol>
 
-         <form action=".\?page=listing.store" id="createListingForm"  method="POST" class="form-horizontal">
-              <h2>Create A Listing</h2>
+        <form id="createListingForm" action="<?= $submitAction; ?>" method="POST" class="form-horizontal">
+              <?php if($listing->id): ?>
+                 <input type="hidden" name='id' value="<?= $listing->id?>">
+              <?php endif; ?>
+              <h2><?= $verb; ?> Listing</h2>
 
               
               <div class="form-group <?php if($errors['category']): ?> has-error <?php endif; ?>">
@@ -37,16 +45,25 @@
                 </div>
               </div>
 
-              <div class="form-group <?php if($errors['buyNowPrice']): ?> has-error <?php endif; ?>">
-                <label for="buyNowPrice" class="col-sm-2 control-label">Price</label>
+              <div class="form-group <?php if($errors['url']): ?> has-error <?php endif; ?>">
+                <label for="url" class="col-sm-2 control-label">Your URL</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="buyNowPrice" name="buyNowPrice" placeholder="$45.90"
+                  <input type="text" class="form-control" id="url" name="url" placeholder="https://google.co.nz"
+                  value="<?php echo $listing->url; ?>">
+                  <div class="help-block"><?php echo $errors['url']; ?></div>
+                </div>
+              </div>
+
+              <div class="form-group <?php if($errors['buyNowPrice']): ?> has-error <?php endif; ?>">
+                <label for="buyNowPrice" class="col-sm-2 control-label">Desired Price ($)</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="buyNowPrice" name="buyNowPrice" placeholder="45.90"
                   value="<?php echo $listing->buyNowPrice; ?>">
                   <div class="help-block"><?php echo $errors['buyNowPrice']; ?></div>
                 </div>
               </div>
                 <div class="form-group <?php if($errors['location']): ?> has-error <?php endif; ?>">
-                <label for="location" class="col-sm-2 control-label">Subject</label>
+                <label for="location" class="col-sm-2 control-label">Location</label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control" id="location" name="location" placeholder="Wellington"
                   value="<?php echo $listing->location; ?>">
@@ -64,10 +81,21 @@
 
               <div class="form-group">
                 <div class="socialMediaButtons">
-                  <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Create Listing</button>
+                  <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> <?= $verb; ?> Listing</button>
                 </div>
               </div>
             </form>
+
+            <?php if($listing->id): ?>
+              <form action=".\?page=listing.destroy" method="POST" class="form-horizontal">
+                <div class="form-group">
+                  <div class="col-sm-offset-4 col-sm-10 col-md-offset-2 col-md-10">
+                    <input type="hidden" name='id' value="<?= $listing->id?>">
+                    <button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete Listing</button>
+                  </div>
+                </div>
+              </form> 
+              <?php endif; ?>  
         </section>
 
 </div>

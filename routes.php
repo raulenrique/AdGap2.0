@@ -41,6 +41,13 @@ switch ($page) {
 		$controller->edit();
 
 		break;
+
+	case "listing.update":
+
+		$controller = new ListingsController();
+		$controller->update();
+
+		break;
 		
 	case "listing.destroy":
 
