@@ -1,76 +1,81 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\Exceptions\ModelNotFoundException;
 
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
-switch ($page) {
-	case "home":
-		
-		$controller = new HomeController();
-		$controller->show();
-		break;
+try{	
 
-	case "listings":
-		
-		$controller = new ListingsController();
-		$controller->index();
-		break;
+		switch ($page) {
+			case "home":
+				
+				$controller = new HomeController();
+				$controller->show();
+				break;
 
-	case "listing":
-		
-		$controller = new ListingsController();
-		$controller->show();
-		break;
+			case "listings":
+				
+				$controller = new ListingsController();
+				$controller->index();
+				break;
 
-	case "listing.create":
-		
-		$controller = new ListingsController();
-		$controller->create();
-		break;
+			case "listing":
+				
+				$controller = new ListingsController();
+				$controller->show();
+				break;
 
-	case "listing.store":
-		
-		$controller = new ListingsController();
-		$controller->store();
-		break;
+			case "listing.create":
+				
+				$controller = new ListingsController();
+				$controller->create();
+				break;
 
-	case "listing.edit":
+			case "listing.store":
+				
+				$controller = new ListingsController();
+				$controller->store();
+				break;
 
-		$controller = new ListingsController();
-		$controller->edit();
+			case "listing.edit":
 
-		break;
+				$controller = new ListingsController();
+				$controller->edit();
 
-	case "listing.update":
+				break;
 
-		$controller = new ListingsController();
-		$controller->update();
+			case "listing.update":
 
-		break;
-		
-	case "listing.destroy":
+				$controller = new ListingsController();
+				$controller->update();
 
-		$controller = new ListingsController();
-		$controller->destroy();
+				break;
+				
+			case "listing.destroy":
 
-		break;	
+				$controller = new ListingsController();
+				$controller->destroy();
 
-	case "info":
-		
-		$controller = new InfoController();
-		$controller->show();
-		break;
+				break;	
 
-	case "contactForm":
+			case "info":
+				
+				$controller = new InfoController();
+				$controller->show();
+				break;
 
-		$controller = new ContactFormController();
-		$controller->show();
-		break;
+			case "contactForm":
 
+				$controller = new ContactFormController();
+				$controller->show();
+				break;
+				
+			}
+			
+	} catch (ModelNotFoundException $e)
 
-		default:
-			echo "404";
-		
+{
+	$controller = new Error404Controller();
+	$controller->error404();
 }
-

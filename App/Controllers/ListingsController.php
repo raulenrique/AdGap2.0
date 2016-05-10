@@ -47,7 +47,7 @@ class ListingsController
 	public function edit()
 	{
 		$listing = $this->getFormData($_GET['id']);
-		$view = new ListingCreateView(['listing' => $listing]);
+		$view = new ListingCreateView(compact('listing'));
 		$view->render();
 	}
 

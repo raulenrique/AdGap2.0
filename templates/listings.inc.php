@@ -21,24 +21,26 @@
               <p>
                   <a href=".\?page=listing.create" class="btn btn-default" id="create"><span class="glyphicon glyphicon-plus"></span> Create Listing</a>
               <p>
+
+          <?php if(count($listings) > 0): ?>
+          <ul>
                 
                 <?php
-			foreach($listings as $listing):?>
-				<ul class="listings">
-				<h3><?= $listing->category; ?> $<?= $listing->buyNowPrice; ?></h3>
-                <li><a href=".\?page=listing&amp;id=<?= $listing->id?>"><?= $listing->title; ?> (<?= $listing->auctionStartDateTime?>)</a></li>
-                </ul>
+          			foreach($listings as $listing):?>
+          				<ul class="listings">
+            				<h3><?= $listing->category; ?> $<?= $listing->buyNowPrice; ?></h3>
+                    <li><a href=".\?page=listing&amp;id=<?= $listing->id?>"><?= $listing->title; ?> (<?= $listing->auctionStartDateTime?>)</a></li>
+                  </ul>
+			           <?php endforeach; ?>
 
-			<?php endforeach; ?>
-            
-                 <!-- <a href="#technologyInfo" class="btn btn-circle page-scroll">
-                    <i class="fa fa-angle-double-down animated"></i>
-                </a> -->
+          </ul>
+          <?php else: ?>
+          <p>There are currently no listings to show you probably cause they've all been sold ;). Check back soon!!! </p>
+          <?php endif; ?>
+
+
             </div>
         </div>
     </section>
-
-
-    
-    </div>
+</div>
 
