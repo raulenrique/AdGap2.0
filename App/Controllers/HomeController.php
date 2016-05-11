@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Views\HomeView;
 
-class HomeController
+class HomeController extends Controller
 {
 	public function show()
 	{

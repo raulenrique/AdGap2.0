@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Views\InfoView;
 
-class InfoController 
+class InfoController extends Controller
 {
 	public function show()
 	{

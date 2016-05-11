@@ -33,7 +33,11 @@ class AuthenticationController extends Controller
 	}
 	public function attempt()
 	{
-
+		var_dump($_POST);
+		if(static::$auth->attempt($_POST['email'],$_POST['password'])){
+			return "true";
+		}
+			
 	}
 	protected function getUserFormData($id = null)
 	{

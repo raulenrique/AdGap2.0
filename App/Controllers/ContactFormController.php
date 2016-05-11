@@ -8,7 +8,7 @@ use App\Views\MessageSentSuccessView;
 
 
 
-class ContactFormController
+class ContactFormController extends Controller
 {
 	private $contactForm = [];
 	

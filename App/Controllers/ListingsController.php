@@ -8,7 +8,7 @@ use App\Views\IndividualListingView;
 use App\Views\ListingCreateView;
 
 
-class ListingsController 
+class ListingsController extends Controller 
 {
 
 	public function index()
