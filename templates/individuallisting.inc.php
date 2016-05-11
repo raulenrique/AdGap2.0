@@ -9,10 +9,13 @@
                   <li><a href=".\?page=listings">All Listings</a></li>
                   <li class="active"><?= $listing->title; ?></li>
                 </ol>
-                <h2><?= $listing->title; ?></h2>
-                 <a href="#recommendedAuctions" class="btn btn-circle page-scroll">
-                    <i class="fa fa-angle-double-down animated"></i>
-                </a>
+                <h2><?= $listing->category; ?></h2>
+                <p><?= $listing->title; ?></p>
+                <p><?= $listing->buyNowPrice; ?></p>
+                <p><?= $listing->location; ?></p>
+                 <p><?= $listing->description; ?></p>
+                  <p><?= $listing->url; ?></p>
+                
                 <p>
                 <a href=".\?page=listing.edit&amp;id=<?= $listing->id; ?>" class="btn btn-default">
                 <span class="glyphicon glyphicon-pencil"></span> Edit Listing</a>

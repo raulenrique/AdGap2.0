@@ -1,33 +1,56 @@
+ <?php  
+     $errors = $user->errors; 
+ ?>
 
-  <div class="wrapper">
-   <!-- Login -->
-    <section id="login" class="container content-section text-center">
+<div class="wrapper">
+
+    <!-- Create Listings Section -->
+        <section id="registrationIndividual" class="container content-section text-center">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-                <h2>Login</h2>
-                <p>Grayscale is a free Bootstrap 3 theme created by Start Bootstrap. It can be yours right now, simply download the template on <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
-                <p>This theme features stock photos by <a href="http://gratisography.com/">Gratisography</a> along with a custom Google Maps skin courtesy of <a href="http://snazzymaps.com/">Snazzy Maps</a>.</p>
-                <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with LESS files for easy customization.</p>
-                 <a href="#publishersInfo" class="btn btn-circle page-scroll">
-                    <i class="fa fa-angle-double-down animated"></i>
-                </a>
-            </div>
-        </div>
-    </section>
+            <div class="col-lg-8 col-lg-offset-2" id="createlisting">
+             <ol class="breadcrumb">
+                  <li><a href=".\">Home</a></li>
+                  <li><a href=".\?page=login">Login</a></li>
+                  <li class="active">Register</a></li>
+                </ol>
 
-    <!-- Register -->
-        <section id="register" class="container content-section text-center">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-                <h2>register</h2>
-                <p>Grayscale is a free Bootstrap 3 theme created by Start Bootstrap. It can be yours right now, simply download the template on <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
-                <p>This theme features stock photos by <a href="http://gratisography.com/">Gratisography</a> along with a custom Google Maps skin courtesy of <a href="http://snazzymaps.com/">Snazzy Maps</a>.</p>
-                <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with LESS files for easy customization.</p>
-                 <a href="#technologyInfo" class="btn btn-circle page-scroll">
-                    <i class="fa fa-angle-double-down animated"></i>
-                </a>
-            </div>
-        </div>
-    </section>
+        <form id="registerNewUser" action=".\page=auth.store" method="POST" class="form-horizontal">
+             
+              <h2>Register New User</h2>
 
-    </div>
+                <div class="form-group <?php if($errors['email']): ?> has-error <?php endif; ?>">
+                    <label for="email" class="col-sm-4 col-md-2 control-label">Email Address</label>
+                    <div class="col-sm-8 col-md-10">
+                      <input class="form-control" id="email" name="email" placeholder="ss@mail.com"
+                      value="<?php echo $user->email; ?>">
+                      <div class="help-block"><?php echo $errors['email']; ?></div>
+                    </div>
+                </div>
+
+                <div class="form-group <?php if($errors['password']): ?> has-error <?php endif; ?>">
+                  <label for="password" class="col-sm-4 col-md-2 control-label"> Password </label>
+                  <div class="col-sm-8 col-md-10">
+                    <input type="password" class="form-control" id="password" name="password">
+                    <div class="help-block"><?php echo $errors['password']; ?></div>
+                  </div>
+                </div>
+                
+                <div class="form-group <?php if($errors['password2']): ?> has-error <?php endif; ?>">
+                  <label for="password2" class="col-sm-4 col-md-2 control-label"> Confirm Password </label>
+                  <div class="col-sm-8 col-md-10">
+                    <input type="password" class="form-control" id="password2" name="password2">
+                    <div class="help-block"><?php echo $errors['password2']; ?></div>
+                  </div>
+                </div>   
+
+                <div class="form-group">
+                <div class="createListinga">
+                  <button type="submit" class="btn btn-listing"><span class="glyphicon glyphicon-plus"></span> Register</button>
+                </div>
+              </div>
+           
+
+        </form> 
+        </div>     
+     </section>
+</div>

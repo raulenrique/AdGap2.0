@@ -57,7 +57,7 @@ p {
 }
 
 
-#about, #users, #technology, #advertisersInfo, #technologyInfo, #individualListing, #allListings, #createListing {
+#about, #users, #technology, #advertisersInfo, #technologyInfo, #individualListing, #allListings, #createListing, #registrationIndividual {
     background-color: #B0BEA9;
     color: #fff;
 }
@@ -77,19 +77,12 @@ p {
     
 }
 
+
 .wrapper {
     margin-top: 90px;
     width: 100%;
 }
 
-/*.leftListings {
-width: 45%;
-float: left;
-}
-.righttListings {
-width: 45%;
-float: right;
-}*/
 
 
 #individualListing, #allListings {
@@ -243,6 +236,8 @@ a:focus {
     .intro .intro-body .intro-text {
         font-size: 26px;
     }
+
+
 }
 
 .btn-circle {
@@ -356,6 +351,10 @@ a:focus {
         height: 100%;
     }
 
+    .form-horizontal .control-label{
+        text-align: left;
+    }
+
     .socialMediaButtons {
         width: 100%;
         display: inline-block;
@@ -395,6 +394,22 @@ a:focus {
     font-size: 18px;
 }
 
+.btn-listing {
+    border: 1px solid #6BAA84;
+    color: #fff;
+    background-color: #6BAA84;
+    font-size: 25px;
+    width: 63%;
+}
+
+.btn-danger {
+    border: 1px solid #d9534f;
+    color: #fff;
+    background-color: #d9534f;
+    font-size: 25px;
+    width: 63%;
+}
+
 .btn-default:hover,
 .btn-default:focus {
     border: 1px solid #6B9B58;
@@ -402,6 +417,14 @@ a:focus {
     color: #000;
     background-color: #6B9B58;
 }
+
+.btn-danger:hover,
+.btn-danger:focus {
+    
+    color: #000;
+    
+}
+
 
 ul.banner-social-buttons {
     margin-top: 0;
@@ -458,7 +481,7 @@ ul.banner-social-buttons {
     }
 
     .btn-default {
-        width: 60%;
+        width: 80%;
         height: 50px;
         
     }
@@ -473,6 +496,13 @@ ul.banner-social-buttons {
 }
 
   
+
+.btn-listing, .btn-danger  {
+
+    font-size: 18px;
+    width: 90%;
+}
+
 
 }
 

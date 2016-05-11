@@ -14,6 +14,25 @@ try{
 				$controller->show();
 				break;
 
+			case "register":
+			
+				$controller = new AuthenticationController();
+				$controller->register();
+				break;
+
+			case "auth.store":
+			
+				$controller = new AuthenticationController();
+				$controller->store();
+				break;
+
+			case "login":
+			
+				$controller = new AuthenticationController();
+				$controller->login();
+				break;
+			
+
 			case "listings":
 				
 				$controller = new ListingsController();

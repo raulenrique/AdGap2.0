@@ -35,6 +35,7 @@ class ListingsController
 	public function store()
 	{
 		$listing = new Listings($_POST);
+		
 		if (! $listing->isValid()) {
 			$_SESSION['listing.create'] = $listing;
 			header("Location: .\?page=listing.create");

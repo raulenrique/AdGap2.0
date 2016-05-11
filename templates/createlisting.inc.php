@@ -80,22 +80,22 @@
                 </div>  
 
               <div class="form-group">
-                <div class="socialMediaButtons">
-                  <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> <?= $verb; ?> Listing</button>
+                <div class="createListinga">
+                  <button type="submit" class="btn btn-listing"><span class="glyphicon glyphicon-plus"></span> <?= $verb; ?> Listing</button>
                 </div>
               </div>
             </form>
-
-            <?php if($listing->id): ?>
-              <form action=".\?page=listing.destroy" method="POST" class="form-horizontal">
-                <div class="form-group">
-                  <div class="col-sm-offset-4 col-sm-10 col-md-offset-2 col-md-10">
-                    <input type="hidden" name='id' value="<?= $listing->id?>">
-                    <button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete Listing</button>
+              <?php if($listing->id): ?>
+                <form action=".\?page=listing.destroy" method="POST" class="form-horizontal">
+                  <div class="form-group">
+                    <div class="createListingb">
+                      <input type="hidden" name='id' value="<?= $listing->id?>">
+                      <button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete Listing</button>
+                    </div>
                   </div>
-                </div>
-              </form> 
-              <?php endif; ?>  
+                </form> 
+              <?php endif; ?>
+
         </section>
 
 </div>

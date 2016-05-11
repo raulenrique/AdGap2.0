@@ -17,10 +17,7 @@
                   <li><a href=".\">Home</a></li>
                   <li class="active">All Listings</a></li>
                 </ol>
-              
-              <p>
-                  <a href=".\?page=listing.create" class="btn btn-default" id="create"><span class="glyphicon glyphicon-plus"></span> Create Listing</a>
-              <p>
+              <h2>Current Listings</h2>
 
           <?php if(count($listings) > 0): ?>
           <ul>
@@ -29,7 +26,7 @@
           			foreach($listings as $listing):?>
           				<ul class="listings">
             				<h3><?= $listing->category; ?> $<?= $listing->buyNowPrice; ?></h3>
-                    <li><a href=".\?page=listing&amp;id=<?= $listing->id?>"><?= $listing->title; ?> (<?= $listing->auctionStartDateTime?>)</a></li>
+                    <li><h3><a href=".\?page=listing&amp;id=<?= $listing->id?>"><?= $listing->title; ?></a></h3></li>
                   </ul>
 			           <?php endforeach; ?>
 
@@ -37,7 +34,7 @@
           <?php else: ?>
           <p>There are currently no listings to show you probably cause they've all been sold ;). Check back soon!!! </p>
           <?php endif; ?>
-
+          
 
             </div>
         </div>

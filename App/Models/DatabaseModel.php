@@ -10,6 +10,8 @@ abstract class DatabaseModel
 {
 	public $data = [];
 	public $errors = [];
+	protected static $columns =[];
+	protected static $smartColumns =[];
 	private static $db;
 
 	public function __construct($input = null)
@@ -20,6 +22,15 @@ abstract class DatabaseModel
 				$this->errors[$column] = null;
 			}
 		}
+
+
+		if(static::$smartColumns){
+			foreach (static::$smartColumns as $column) {
+				$this->$column = null;
+				$this->errors[$column] = null;
+			}
+		}
+		
 
 		if(is_numeric($input) && $input > 0 ){
 			//if input is a number, load that record from the db
@@ -46,10 +57,16 @@ abstract class DatabaseModel
 
 	public function processArray($input)
 	{
+
 		foreach (static::$columns as $column) {
 			if (isset($input[$column])) 
-				$this->column = $input[$column];
+				$this->$column = $input[$column];
 			}
+
+		foreach (static::$smartColumns as $column) {
+			if(isset($input[$column]))
+				$this->$column = $input[$column];
+		}
 	}
 
 
@@ -133,6 +150,10 @@ abstract class DatabaseModel
 		$statement = $db->prepare($query);
 
 		foreach ($columns as $column) {
+			if ($column === "password") {
+				$this->$column = password_hash($this->$column, PASSWORD_DEFAULT);
+			}
+
 			$statement->bindValue(":" . $column, $this->$column);
 		}
 		
@@ -164,6 +185,9 @@ abstract class DatabaseModel
 		$statement = $db->prepare($query);
 		var_dump($statement);
 		foreach (static::$columns as $column) {
+			if ($column === "password") {
+				$this->$column = password_hash($this->$column, PASSWORD_DEFAULT);
+			}
 			$statement->bindValue(":".$column, $this->$column);
 		}
 		$statement->execute();
@@ -199,6 +223,7 @@ abstract class DatabaseModel
 							$valid = false;
 							$this->errors[$column] = "Must be a number value.";
 						}
+						break;
 					case 'email':
 						if(! filter_var($this->$column, FILTER_VALIDATE_EMAIL)){
 							$valid = false;
@@ -209,6 +234,12 @@ abstract class DatabaseModel
 						if(! filter_var($this->$column,FILTER_VALIDATE_URL)){
 							$valid = false;
 							$this->errors[$column] = "Must be a valid url.";
+						}
+						break;
+					case 'match':
+						if( $this->$column !== $this->$value){
+							$valid = false;
+							$this->errors[$column] = "Must match with the $value field.";
 						}
 						break;
 				}
@@ -230,7 +261,7 @@ abstract class DatabaseModel
 
 	public function __get($name)
 	{
-		if (in_array($name, static::$columns)) {
+		if (in_array($name, static::$columns) || in_array($name, static::$smartColumns)) {
 			
            return $this->data[$name];
          }
@@ -238,7 +269,7 @@ abstract class DatabaseModel
     }
 	public function __set($name, $value)
 	{
-		if (! in_array($name, static::$columns)) {
+		if (! in_array($name, static::$columns) && ! in_array($name, static::$smartColumns)) {
             throw new UnexpectedValueException("Property '$name' not found in the data variable.");
           }
         $this->data[$name] = $value;
