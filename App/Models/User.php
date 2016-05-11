@@ -8,7 +8,7 @@ class User extends DatabaseModel
 	protected static $columns = ['id','email','password','role'];
 	protected static $smartColumns = ['password2'];
 	protected static $validationRules = [
-					"email" 		=> "email",
+					"email" 		=> "email,unique:App\Models\User",
 					"password" 		=> "minlength:6",
 					"password2" 	=> "match:password"
 

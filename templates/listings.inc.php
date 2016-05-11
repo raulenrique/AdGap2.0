@@ -34,7 +34,11 @@
           <?php else: ?>
           <p>There are currently no listings to show you probably cause they've all been sold ;). Check back soon!!! </p>
           <?php endif; ?>
-          
+          <div class="form-group">
+                <div class="createListinga">
+                  <a href=".\?page=listing.create" class="btn btn-listing"><span class="glyphicon glyphicon-plus"></span> Create Listing</a>
+                </div>
+          </div>
 
             </div>
         </div>

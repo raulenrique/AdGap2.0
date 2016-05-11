@@ -6,7 +6,7 @@ use App\Views\RegisterFormView;
 use App\Views\LoginFormView;
 use App\Models\User;
 
-class AuthenticationController 
+class AuthenticationController extends Controller
 {
 	public function register()
 	{
@@ -23,11 +23,17 @@ class AuthenticationController
 			exit();
 		}
 		$user->save();
+		header("Location:.\?page=login");
 	}
 	public function login()
 	{
-		$view = new LoginFormView();
+		$user = $this->getUserFormData();
+		$view = new LoginFormView(compact('user'));
 		$view->render();
+	}
+	public function attempt()
+	{
+
 	}
 	protected function getUserFormData($id = null)
 	{

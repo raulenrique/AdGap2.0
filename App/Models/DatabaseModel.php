@@ -4,6 +4,7 @@ namespace App\Models;
 
 use PDO;
 use UnexpectedValueException;
+use App\Models\Exceptions\ModelNotFoundException;
 
 
 abstract class DatabaseModel
@@ -115,6 +116,30 @@ abstract class DatabaseModel
 		while($record = $statement->fetch(PDO::FETCH_ASSOC)) {
 			$this->data = $record;
 		}
+	}
+
+	public static function findBy($column, $value)
+	{
+		$db = static::getDatabaseConnection();
+
+		$query ="SELECT " . implode("," , static::$columns) . " FROM " . static::$tableName . 
+			" WHERE " . $column . " = :value";
+
+		$statement = $db->prepare($query);
+		var_dump($statement);
+		$statement->bindValue(':value', $value);
+		$statement->execute();
+
+		$record = $statement->fetch(PDO::FETCH_ASSOC);
+		
+		if(! $record){
+			throw new ModelNotFoundException();
+		}
+
+		$obj = new static;
+		$obj->data = $record;
+		return $obj;
+
 	}
 
 	public function save()
@@ -241,6 +266,15 @@ abstract class DatabaseModel
 							$valid = false;
 							$this->errors[$column] = "Must match with the $value field.";
 						}
+						break;
+					case 'unique':
+						try {
+							$record = $value::findBy($column, $this->$column);
+						} catch (ModelNotFoundException $e) {
+							break;
+						}
+						$valid = false;
+						$this->errors[$column] = "This email is already in use";
 						break;
 				}
 			}
