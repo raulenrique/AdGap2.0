@@ -20,9 +20,9 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>About</h2>
-                <p>Grayscale is a free Bootstrap 3 theme created by Start Bootstrap. It can be yours right now, simply download the template on <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
-                <p>This theme features stock photos by <a href="http://gratisography.com/">Gratisography</a> along with a custom Google Maps skin courtesy of <a href="http://snazzymaps.com/">Snazzy Maps</a>.</p>
-                <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with LESS files for easy customization.</p>
+                <p>The AdGap is a marketplace for advertisers and publishers. </p> 
+                <p>It is based off a social auction model where advertisers can purchase advertising space and publishers can offer their advertising space.
+                It delivers performance traffic to data savvy marketers and their agencies or those who need it.</p>
                  <a href="#statistics" class="btn btn-circle page-scroll">
                     <i class="fa fa-angle-double-down animated"></i>
                 </a>
@@ -35,12 +35,15 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Statistics</h2>
-                <p>Grayscale is a free Bootstrap 3 theme created by Start Bootstrap. It can be yours right now, simply download the template on <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
-                <p>This theme features stock photos by <a href="http://gratisography.com/">Gratisography</a> along with a custom Google Maps skin courtesy of <a href="http://snazzymaps.com/">Snazzy Maps</a>.</p>
-                <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with LESS files for easy customization.</p>
-                 <a href="#users" class="btn btn-circle page-scroll">
-                    <i class="fa fa-angle-double-down animated"></i>
-                </a>
+                <div class="row statistics"><h4>If you aren't listing with us, you're missing out</h4></div>
+                   <div class="row">
+                    <div class="col-md-4"><div class="stats">Widget 1</div></div>
+                    <div class="col-md-4"><div class="stats">Widget 1</div></div>
+                    <div class="col-md-4"><div class="stats">Widget 1</div></div>
+                  </div>
+                    <div><a href="#users" class="btn btn-circle page-scroll">
+                      <i class="fa fa-angle-double-down animated"></i>
+                    </a></div>
             </div>
         </div>
     </section>
@@ -48,16 +51,19 @@
      <!-- Users Section -->
         <section id="users" class="container content-section text-center">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-                <h2>Users</h2>
-                <p>Grayscale is a free Bootstrap 3 theme created by Start Bootstrap. It can be yours right now, simply download the template on <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
-                <p>This theme features stock photos by <a href="http://gratisography.com/">Gratisography</a> along with a custom Google Maps skin courtesy of <a href="http://snazzymaps.com/">Snazzy Maps</a>.</p>
-                <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with LESS files for easy customization.</p>
-                 <a href="#press" class="btn btn-circle page-scroll">
-                    <i class="fa fa-angle-double-down animated"></i>
-                </a>
+        <div class="col-lg-8 col-lg-offset-2">
+        <h2>Users</h2>
+           <div class="row statistics"><h4><p>No matter the industry or type of creation</p> we have ad spaces to fit all needs and the opportunities are endless</h4></div>
+                   <div class="row">
+                    <div class="col-md-4"><div class="users">Widget 1</div></div>
+                    <div class="col-md-4"><div class="users">Widget 1</div></div>
+                    <div class="col-md-4"><div class="users">Widget 1</div></div>
+                  </div>
+                    <div><a href="#press" class="btn btn-circle page-scroll">
+                      <i class="fa fa-angle-double-down animated"></i>
+                    </a></div>
             </div>
-        </div>
+            </div>
     </section>
 
      <!-- Press Section -->
@@ -65,9 +71,9 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Press</h2>
-                <p>Grayscale is a free Bootstrap 3 theme created by Start Bootstrap. It can be yours right now, simply download the template on <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
-                <p>This theme features stock photos by <a href="http://gratisography.com/">Gratisography</a> along with a custom Google Maps skin courtesy of <a href="http://snazzymaps.com/">Snazzy Maps</a>.</p>
-                <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with LESS files for easy customization.</p>
+                <p></p>
+                <p></p>
+                <p></p>
                  <a href="#technology" class="btn btn-circle page-scroll">
                     <i class="fa fa-angle-double-down animated"></i>
                 </a>
@@ -80,9 +86,9 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Technology</h2>
-                <p>Grayscale is a free Bootstrap 3 theme created by Start Bootstrap. It can be yours right now, simply download the template on <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
-                <p>This theme features stock photos by <a href="http://gratisography.com/">Gratisography</a> along with a custom Google Maps skin courtesy of <a href="http://snazzymaps.com/">Snazzy Maps</a>.</p>
-                <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with LESS files for easy customization.</p>
+                <p></p>
+                <p></p>
+                <p></p>
                  <a href="#contact" class="btn btn-circle page-scroll">
                     <i class="fa fa-angle-double-down animated"></i>
                 </a>
@@ -96,7 +102,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Contact Us</h2>
-                <p>Feel free to email us to provide some feedback on our templates, give us suggestions for new templates and themes, or to just say hello!</p>
+                <p></p>
                 <p><a href="mailto:feedback@startbootstrap.com">feedback@startbootstrap.com</a>
                 </p>
             </div>

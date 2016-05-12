@@ -20,7 +20,7 @@
               <h2>Current Listings</h2>
 
           <?php if(count($listings) > 0): ?>
-          <ul>
+          <ul class="listings">
                 
                 <?php
           			foreach($listings as $listing):?>
@@ -34,10 +34,12 @@
           <?php else: ?>
           <p>There are currently no listings to show you probably cause they've all been sold ;). Check back soon!!! </p>
           <?php endif; ?>
-          <div class="form-group">
-                <div class="createListinga">
-                  <a href=".\?page=listing.create" class="btn btn-listing"><span class="glyphicon glyphicon-plus"></span> Create Listing</a>
-                </div>
+            <?php if(static::$auth->isRegisteredUser()): ?>
+            <div class="form-group">
+                  <div class="createListinga">
+                    <a href=".\?page=listing.create" class="btn btn-listing"><span class="glyphicon glyphicon-plus"></span> Create Listing</a>
+                  </div>
+              <?php endif; ?>
           </div>
 
             </div>

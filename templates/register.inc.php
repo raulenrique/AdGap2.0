@@ -10,7 +10,7 @@
             <div class="col-lg-8 col-lg-offset-2">
             
 
-        <form id="registerNewUser" action=".\page=auth.store" method="POST" class="form-horizontal">
+        <form id="registerNewUser" action=".\?page=auth.store" method="POST" class="form-horizontal">
              
               <h2>Register New User</h2>
 

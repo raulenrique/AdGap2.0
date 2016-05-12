@@ -16,10 +16,12 @@
                  <p><?= $listing->description; ?></p>
                   <p><?= $listing->url; ?></p>
                 
+                <?php if (static::$auth->isRegisteredUser()): ?>
                 <p>
                 <a href=".\?page=listing.edit&amp;id=<?= $listing->id; ?>" class="btn btn-default">
                 <span class="glyphicon glyphicon-pencil"></span> Edit Listing</a>
               </p>
+               <?php endif; ?>
             </div>
         </div>
     </section>

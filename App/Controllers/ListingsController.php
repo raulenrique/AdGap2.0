@@ -27,6 +27,7 @@ class ListingsController extends Controller
 
 	public function create()
 	{
+		static::$auth->mustBeLister();
 		$listing = $this->getFormdata();
 		$view = new ListingCreateView(['listing' => $listing]);
 		$view->render();
@@ -34,6 +35,7 @@ class ListingsController extends Controller
 
 	public function store()
 	{
+		static::$auth->mustBeLister();
 		$listing = new Listings($_POST);
 		
 		if (! $listing->isValid()) {
@@ -47,6 +49,7 @@ class ListingsController extends Controller
 
 	public function edit()
 	{
+		static::$auth->mustBeLister();
 		$listing = $this->getFormData($_GET['id']);
 		$view = new ListingCreateView(compact('listing'));
 		$view->render();
@@ -54,6 +57,7 @@ class ListingsController extends Controller
 
 	public function update()
 	{
+		static::$auth->mustBeLister();
 		$listing = new Listings($_POST['id']);
 		$listing->processArray($_POST);
 		var_dump($listing);
@@ -68,6 +72,7 @@ class ListingsController extends Controller
 
 	public function destroy()
 	{
+		static::$auth->mustBeLister();
 		Listings::destroy($_POST['id']);
 		header("Location: .\?page=listings");
 	}

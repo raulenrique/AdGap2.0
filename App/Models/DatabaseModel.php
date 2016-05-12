@@ -6,13 +6,14 @@ use PDO;
 use UnexpectedValueException;
 use App\Models\Exceptions\ModelNotFoundException;
 
-
 abstract class DatabaseModel
 {
 	public $data = [];
 	public $errors = [];
+
 	protected static $columns =[];
 	protected static $smartColumns =[];
+	
 	private static $db;
 
 	public function __construct($input = null)
@@ -23,8 +24,6 @@ abstract class DatabaseModel
 				$this->errors[$column] = null;
 			}
 		}
-
-
 		if(static::$smartColumns){
 			foreach (static::$smartColumns as $column) {
 				$this->$column = null;
@@ -32,7 +31,6 @@ abstract class DatabaseModel
 			}
 		}
 		
-
 		if(is_numeric($input) && $input > 0 ){
 			//if input is a number, load that record from the db
 			$this->find($input);
@@ -45,7 +43,7 @@ abstract class DatabaseModel
 
 	private static function getDatabaseConnection() 
 	{
-			if (! self::$db){
+		if (! self::$db){
 			$dsn = 'mysql:host=localhost;dbname=theadgap;charset=utf8';
 			self::$db = new PDO($dsn, 'root', '');
 
@@ -53,23 +51,20 @@ abstract class DatabaseModel
 			self::$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 		}
 		return self::$db;
+	
 	}
-
 
 	public function processArray($input)
 	{
-
-		foreach (static::$columns as $column) {
-			if (isset($input[$column])) 
+		foreach(static::$columns as $column){
+			if(isset($input[$column]))
 				$this->$column = $input[$column];
-			}
-
+		}
 		foreach (static::$smartColumns as $column) {
 			if(isset($input[$column]))
 				$this->$column = $input[$column];
 		}
 	}
-
 
 	public static function all($sortcolumn = "", $asc = true)
 	{
@@ -113,11 +108,15 @@ abstract class DatabaseModel
 		$statement->bindValue(":id", $id);
 		$statement->execute();
 
-		while($record = $statement->fetch(PDO::FETCH_ASSOC)) {
-			$this->data = $record;
-		}
-	}
+		$record = $statement->fetch(PDO::FETCH_ASSOC);
 
+		if (! $record){
+			throw new ModelNotFoundException();
+		}
+		
+		$this->data = $record;
+		
+	}
 	public static function findBy($column, $value)
 	{
 		$db = static::getDatabaseConnection();
@@ -126,7 +125,7 @@ abstract class DatabaseModel
 			" WHERE " . $column . " = :value";
 
 		$statement = $db->prepare($query);
-		var_dump($statement);
+		
 		$statement->bindValue(':value', $value);
 		$statement->execute();
 
@@ -141,7 +140,7 @@ abstract class DatabaseModel
 		return $obj;
 
 	}
-
+	
 	public function save()
 	{
 		if($this->id > 0){
@@ -149,7 +148,6 @@ abstract class DatabaseModel
 		} else {
 			$this->insert();
 		}
-		
 	}
 
 	public function insert()
@@ -178,7 +176,6 @@ abstract class DatabaseModel
 			if ($column === "password") {
 				$this->$column = password_hash($this->$column, PASSWORD_DEFAULT);
 			}
-
 			$statement->bindValue(":" . $column, $this->$column);
 		}
 		
@@ -187,7 +184,6 @@ abstract class DatabaseModel
 		$this->id =$db->lastInsertId();
 		
 	}
-
 	public function update()
 	{
 		$db = static::getDatabaseConnection();
@@ -246,7 +242,7 @@ abstract class DatabaseModel
 					case 'numeric':
 						if(! is_numeric($this->$column)){
 							$valid = false;
-							$this->errors[$column] = "Must be a number value.";
+							$this->errors[$column] = "Must be a number.";
 						}
 						break;
 					case 'email':
@@ -255,10 +251,10 @@ abstract class DatabaseModel
 							$this->errors[$column] = "Must be a valid email address.";
 						}
 						break;
-					case 'url':
-						if(! filter_var($this->$column,FILTER_VALIDATE_URL)){
+						case 'url':
+						if(! filter_var($this->$column, FILTER_VALIDATE_URL)){
 							$valid = false;
-							$this->errors[$column] = "Must be a valid url.";
+							$this->errors[$column] = "Must be a valid URL.";
 						}
 						break;
 					case 'match':
@@ -282,7 +278,6 @@ abstract class DatabaseModel
 		}
 		return $valid;
 	}
-
 	public static function destroy($id)
 	{
 		$db = static::getDatabaseConnection();
@@ -308,5 +303,4 @@ abstract class DatabaseModel
           }
         $this->data[$name] = $value;
  	}
-
 }

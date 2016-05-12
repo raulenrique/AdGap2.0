@@ -10,10 +10,14 @@
             <div class="col-lg-8 col-lg-offset-2" >
           
 
-        <form id="registerNewUser" action=".\page=auth.store" method="POST" class="form-horizontal">
+        <form id="registerNewUser" action=".\?page=auth.attempt" method="POST" class="form-horizontal">
              
               <h2>Log In</h2>
+               <?php if($error): ?>
+                <div class="alert alert-danger" role="alert"><strong>Nope.</strong> No user by that email with that password was found. Check spelling and try again.</div>
 
+              <?php endif; ?>
+              
                 <div class="form-group <?php if($errors['email']): ?> has-error <?php endif; ?>">
                     <label for="email" class="col-sm-4 col-md-2 control-label">Email Address</label>
                     <div class="col-sm-8 col-md-10">
