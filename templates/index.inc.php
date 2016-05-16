@@ -6,9 +6,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <h1 class="brand-heading">The AdGap</h1>
-                        <p class="intro-text">A <strong>marketplace</strong> for <strong>advertising </strong>space.<br>Created for <strong>publishers</strong> and <strong>advertisers</strong><br>to <strong>purchase</strong> and <strong>sell</strong> advertising <strong> space</strong>, <br>seamlessly.</p>
-                        <a class="btn btn-info btn-lg btn-block page-scroll" href="#about">Learn More</a>
+                        <h1 class="brand-heading">The  Ad_Gap</h1>
+                        <p class="intro-text">A marketplace for advertising space.<br>Created for publishers and advertisers<br>to purchase and sell advertising space, <br>seamlessly.</p>
+                        <a class=" btn-info btn-lg btn-block page-scroll" href="#about">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@
         <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
         <h2>Users</h2>
-           <div class="row statistics"><h4><p>No matter the industry or type of creation</p> we have ad spaces to fit all needs and the opportunities are endless</h4></div>
+           <div class="row statistics"><h4>No matter the industry or type of creation<br> we have ad spaces to fit all needs and the opportunities are endless</h4></div>
                    <div class="row">
                     <div class="col-md-4"><div class="users">Widget 1</div></div>
                     <div class="col-md-4"><div class="users">Widget 1</div></div>
@@ -71,9 +71,12 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Press</h2>
-                <p></p>
-                <p></p>
-                <p></p>
+                <div class="row">
+                    <div class="col-xs-6 col-md-3 press">Widget 1</div>
+                    <div class="col-xs-6 col-md-3 press">Widget 1</div>
+                    <div class="col-xs-6 col-md-3 press">Widget 1</div>
+                     <div class="col-xs-6 col-md-3 press">Widget 1</div>
+                  </div>
                  <a href="#technology" class="btn btn-circle page-scroll">
                     <i class="fa fa-angle-double-down animated"></i>
                 </a>

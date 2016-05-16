@@ -1,6 +1,6 @@
 
 
-  <div class="wrapper">
+  
    <!-- Advertisers Section -->
     <section id="advertisersInfo" class="container content-section text-center">
         <div class="row">
@@ -45,4 +45,5 @@
             </div>
         </div>
     </section>
-    </div>
+
+    

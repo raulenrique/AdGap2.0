@@ -1,4 +1,8 @@
+@font-face {
+    font-family: 'Bebas';
+    src: url('../fonts/bebas.ttf');
 
+}
 
 html {
     width: 100%;
@@ -9,10 +13,10 @@ html {
 
 body {
     width: 100%;
-    
-    font-family: 'Exo 2',sans-serif;
+    height: 100%;
+    font-family: 'Bebas',sans-serif;
     color: #000;
-    background-color: wheat;
+    background-color: burlywood;
     margin: 0 0 30px;
     min-height: 100%;
 }
@@ -25,7 +29,8 @@ h5,
 h6 {
     margin: 0 0 35px;
     text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family:'Bebas',sans-serif;
+    letter-spacing: 5px;
     font-weight: 700;
     letter-spacing: 1px;
 }
@@ -35,26 +40,23 @@ h3 {
 }
 
 h1 {
-    background-color: #6BAA84;
-    text-transform: none;s
+/*    background-color: #6BAA84;
+*/    text-transform: none;
+
 }
 
 input {
     outline-color: green;
 }
 
-.intro-text {
-    background-color: rgba(20,20,20,0.2627450980392157);
-  /*  background-color: rgba(255,255,255,.3);*/
 
-}
-
-p {
+/*p {
     margin: 0 0 25px;
     font-size: 18px;
     line-height: 1.5;
     text-align: center;
-}
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}*/
 
 
 footer {
@@ -64,12 +66,15 @@ footer {
     height: 30px;
     width: 100%;
     overflow:hidden;
+    background-color: white;
+    text-align: center;
 }
 
 footer p {
     margin: 0;
-    color: white;
-    float: right;
+    color: black;
+     font-family: 'Bebas',sans-serif;
+     text-align: center;
 }
 
 ::-moz-selection {
@@ -99,11 +104,6 @@ img::-moz-selection {
 }
 
 
- #individualListing, #allListings, #createListing, #registrationIndividual,#error404,#error401
-{
-    min-height: 768px;
-}
-
 
 #listingsHeader {
     background-color: black;
@@ -124,13 +124,14 @@ img::-moz-selection {
     margin-top: 90px;
     width: 100%;
     height: 100%;
+    background-color: #B0BEA9;
 }
 
 
 
-#individualListing, #allListings {
+/*#individualListing, #allListings {
     height: 100%;
-}
+}*/
 
 .listings  {
     list-style-type: none;
@@ -156,8 +157,7 @@ a:focus {
 
 .navbar-custom {
     margin-bottom: 0;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-}
+   font-family: 'Bebas',sans-serif;}
 
 .navbar-custom .navbar-brand {
     font-weight: 700;
@@ -178,9 +178,7 @@ a:focus {
     outline: 0;
 }
 
-.navbar-custom a {
-    color: #000;
-}
+
 
 .navbar-custom a.top-nav-collapse {
     color: #000;
@@ -222,22 +220,37 @@ a:focus {
     color: #000;
 }
 
-
 .intro {
     display: table;
     width: 100%;
-    height: auto;
+    height: 100%;
     padding: 100px 0;
     text-align: center;
     color: #fff;
-    background: url(../assets/img/home.jpg) no-repeat bottom center scroll;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
+    background-color: black;
+    opacity: 0.9;
+
+
+    }
+
+.intro::after {
+  content: "";
+  background: url(../assets/img/home.jpg) no-repeat bottom center scroll;
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
 }
 
-.intro .intro-body {
+
+.intro-body {
     display: table-cell;
     vertical-align: middle;
 }
@@ -254,6 +267,21 @@ a:focus {
     -webkit-transition: background .3s ease-in-out;
     -moz-transition: background .3s ease-in-out;
     transition: background .3s ease-in-out;
+}
+
+.btn-info:focus, .btn-info {
+    letter-spacing: 5px;
+    width: 50%;
+    background-color: #4CAF50;
+    border: #4CAF50;
+}
+
+.btn-info:active, .btn-info:hover  {
+    background-color: #81C784;
+}
+
+.btn-block {
+    display: inline-block;
 }
 
 .fa-angle-double-down {
@@ -335,7 +363,7 @@ a:focus {
 
 
 
-.stats  {
+.stats,.press  {
     background-color: #B0BEA9;
 }
 
@@ -350,6 +378,10 @@ a:focus {
     padding: 10px; /*Within divs*/
 }
 
+.press {
+    height: 250px;
+}
+
 
 
 .btn {
@@ -360,14 +392,15 @@ a:focus {
     -webkit-transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
+    position: relative;
 }
 
-.btn-default {
+/*.btn-default {
     border: 1px solid #6BAA84;
     color: #fff;
     background-color: #6BAA84;
     font-size: 18px;
-}
+}*/
 
 .btn-listing {
     border: 1px solid #6BAA84;
@@ -385,13 +418,13 @@ a:focus {
     width: 63%;
 }
 
-.btn-default:hover,
+/*.btn-default:hover,
 .btn-default:focus {
     border: 1px solid #6B9B58;
     outline: 0;
     color: #000;
     background-color: #6B9B58;
-}
+}*/
 
 .btn-danger:hover,
 .btn-danger:focus {
@@ -413,6 +446,7 @@ ul.banner-social-buttons {
         border-bottom: 0;
         letter-spacing: 1px;
         background: 0 0;
+        color: white;
         -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
         -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
         transition: background .5s ease-in-out,padding .5s ease-in-out;
@@ -425,6 +459,14 @@ ul.banner-social-buttons {
         background: #fff;
 
     }
+
+    .navbar-custom a {
+    color: #fff;
+}
+
+.navbar-custom.top-nav-collapse a {
+    color: black;
+}
 
     p {
         margin: 0 0 35px;
@@ -440,10 +482,14 @@ ul.banner-social-buttons {
     .intro .intro-body .brand-heading {
         font-size: 100px;
         padding-bottom: 15px;
+        word-spacing: 25px;
+        letter-spacing: 10px;
     }
 
-    .intro .intro-body .intro-text {
+    .intro-text {
         font-size: 26px;
+        line-height: 50px;
+
     }
 
 
@@ -516,8 +562,12 @@ ul.banner-social-buttons {
 
     .navbar-custom {
         background-color: white;
-        color: black;
+        
     }
+
+         .navbar-custom a {
+        color: black;
+}
 
     ul.banner-social-buttons li {
         display: block;
@@ -562,7 +612,7 @@ ul.banner-social-buttons {
     padding-bottom: 10px;
 }
 
-.intro .intro-body .intro-text {
+ .intro-text {
     font-size: 25px;
 }
 

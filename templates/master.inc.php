@@ -41,7 +41,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">
-                    <i class="fa fa-comments"></i>  The__AdGap
+                    <i class="fa fa-comments"></i>  The Ad_Gap
                 </a>
             </div>
 

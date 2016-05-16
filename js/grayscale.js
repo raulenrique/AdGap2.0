@@ -10,10 +10,10 @@
 function collapseNavbar() {
     if ($(".navbar").offset().top > 0)  {
         $(".navbar-fixed-top").addClass("top-nav-collapse");
-        $(".navbar-custom a").css("color", "black");
+       
     }  else {
         $(".navbar-fixed-top").removeClass("top-nav-collapse");
-        $(".navbar-custom a").css("color", "white");
+       
     }
 }
 
