@@ -21,6 +21,10 @@ body {
     min-height: 100%;
 }
 
+p {
+    font-family: 'Titillium Web', sans-serif;
+}
+
 h1,
 h2,
 h3,
@@ -31,7 +35,6 @@ h6 {
     text-transform: uppercase;
     font-family:'Bebas',sans-serif;
     letter-spacing: 5px;
-    font-weight: 700;
     letter-spacing: 1px;
 }
 
@@ -41,21 +44,13 @@ h3 {
 
 h1 {
    text-transform: none;
+   font-weight: 700;
 
 }
 
 input {
     outline-color: green;
 }
-
-
-/*p {
-    margin: 0 0 25px;
-    font-size: 18px;
-    line-height: 1.5;
-    text-align: center;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-}*/
 
 
 footer {
@@ -130,19 +125,13 @@ img::-moz-selection {
     background-color: #B0BEA9;
 }
 
-
-
-/*#individualListing, #allListings {
-    height: 100%;
-}*/
-
 .listings  {
     list-style-type: none;
     padding-left: 0px;
 }
 
 a {
-    color: #6B9B58;
+    color: #4CAF50;
     -webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
@@ -158,38 +147,22 @@ a:focus {
     font-weight: 400;
 }
 
+.navbar {
+    height: 75px;
+}
 .navbar-custom {
     margin-bottom: 0;
-   font-family: 'Bebas',sans-serif;}
+   font-family: 'Bebas',sans-serif;
+}
 
 .navbar-custom .navbar-brand {
     font-weight: 700;
     font-size: x-large;
 }
 
-.navbar-custom .navbar-brand:focus {
-    outline: 0;
-}
-
-.navbar-custom .navbar-brand .navbar-toggle {
-    padding: 4px 6px;
-    font-size: 16px;
-}
-
-.navbar-custom .navbar-brand .navbar-toggle:focus,
-.navbar-custom .navbar-brand .navbar-toggle:active {
-    outline: 0;
-}
-
 .navbar-custom a.top-nav-collapse {
     color: #000;
-
 }
-
-.navbar-main-collapse{
-    font-size: medium;
-}
-
 
 .navbar-custom .nav li a {
     -webkit-transition: background .3s ease-in-out;
@@ -203,23 +176,6 @@ a:focus {
     background-color: transparent;
 }
 
-.navbar-custom .nav li a:focus,
-.navbar-custom .nav li a:active {
-    outline: 0;
-    background-color: transparent;
-}
-
-.navbar-custom .nav li.active {
-    outline: 0;
-}
-
-.navbar-custom .nav li.active a {
-    background-color: rgba(255,255,255,.3);
-}
-
-.navbar-custom .nav li.active a:hover {
-    color: #000;
-}
 
 .intro {
     display: table;
@@ -259,9 +215,8 @@ a:focus {
     height: 70px;
     margin: 5%;
     border: 2px solid black;
-/*  border-radius: 100%!important;
-*/  border-radius: 15%!important;
-    font-size: 40px;
+    border-radius: 7%!important;
+    font-size: 35px;
     color: black;
     background: 0 0;
     -webkit-transition: background .3s ease-in-out;
@@ -298,10 +253,15 @@ a:focus {
 
 
 .btn-circle:hover,
-.btn-circle:focus {
+.btn-circle:active {
     outline: 0;
     color: black;
     background: rgba(255,255,255,.1);
+}
+
+.btn-circle:focus {
+    background-color: transparent;
+    color: black;
 }
 
 .btn-circle i.animated {
@@ -368,11 +328,6 @@ a:focus {
     color:white;
 }
 
-.users {
-    background-color: #F5DEB3;
-}
-
-
 .stats, .users {
     height: 250px;
     margin: 5px; /*in between columns*/
@@ -402,6 +357,7 @@ a:focus {
     color: #fff;
     background-color: #4CAF50;
     font-size: 25px;
+    word-spacing: 8px;
 }
 
 .btn-listing,
@@ -433,7 +389,7 @@ width: 40%;
 
 @media(min-width:769px) {
     .navbar-custom {
-        padding: 20px;
+        /*padding: 20px;*/
         border-bottom: 0;
         letter-spacing: 1px;
         background: 0 0;
@@ -444,8 +400,8 @@ width: 40%;
     }
 
     .navbar-custom.top-nav-collapse {
-        padding-bottom: 15px;
-        padding-top: 15px;
+        /*padding-bottom: 15px;
+        padding-top: 15px;*/
         border-bottom: 1px solid rgba(255,255,255,.3);
         background: #fff;
 
@@ -480,16 +436,16 @@ width: 40%;
     .intro-text {
         font-size: 26px;
         line-height: 50px;
+        word-spacing: 10px;
+        
 
     }
 
     #map {
         width: 100%;
         margin-bottom: 25px;
-    }
-
-    #map {
         height: 400px;
+
     }
 
 
@@ -571,11 +527,6 @@ width: 40%;
         width: 90%;
     }
 
-
-
-    .stats , .users {
-        width: 
-    }
 
     #create {
             padding-top: 11px;

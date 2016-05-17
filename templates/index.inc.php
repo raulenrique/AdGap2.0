@@ -6,8 +6,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <h1 class="brand-heading">The  Ad_Gap</h1>
-                        <p class="intro-text">A marketplace for advertising space.<br>Created for publishers and advertisers<br>to purchase and sell advertising space, <br>seamlessly.</p>
+                        <h1 class="brand-heading">The Ad_Gap</h1>
+                        <h5 class="intro-text">The portal for advertisers and publishers.<br>Get rewarded for your content as a publisher.<br> maximise advertising expenditure as an advertiser.</h5>
                         <a class=" btn-info btn-lg btn-block page-scroll" href="#about">Learn More</a>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Statistics</h2>
-                <div class="row statistics"><h4>If you aren't listing with us, you're missing out</h4></div>
+                <div class="row statistics"><p>If you aren't listing with us, you're missing out</p></div>
                    <div class="row">
                     <div class="col-md-4"><div class="stats">Widget 1</div></div>
                     <div class="col-md-4"><div class="stats">Widget 1</div></div>
@@ -53,7 +53,7 @@
         <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
         <h2>Users</h2>
-           <div class="row statistics"><h4>No matter the industry or type of creation<br> we have ad spaces to fit all needs and the opportunities are endless</h4></div>
+           <div class="row statistics"><p>No matter the industry or type of creation<br> we have ad spaces to fit all needs and the opportunities are endless</p></div>
                    <div class="row">
                     <div class="col-md-4"><div class="users">Widget 1</div></div>
                     <div class="col-md-4"><div class="users">Widget 1</div></div>
@@ -109,9 +109,10 @@
                 <p><a href="mailto:feedback@theadgap.com">feedback@theadgap.com</a>
                 </p>
             </div>
-            <div class="col-lg-offset-2 col-sm-8"><div id="map"></div></div>
-            </div>
             <!-- Map Section -->
+            <div class="col-lg-offset-2 col-sm-8 col-md-offset-2"><div id="map"></div></div>
+            </div>
+            
 
     
      <form action=".\?page=contactForm" id="contactForm" method="POST" class="form-horizontal">
