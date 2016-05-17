@@ -106,17 +106,19 @@
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Contact Us</h2>
                 <p></p>
-                <p><a href="mailto:feedback@startbootstrap.com">feedback@startbootstrap.com</a>
+                <p><a href="mailto:feedback@theadgap.com">feedback@theadgap.com</a>
                 </p>
             </div>
+            <div class="col-lg-offset-2 col-sm-8"><div id="map"></div></div>
+            </div>
             <!-- Map Section -->
-          
-    <div id="map"></div> 
+
+    
      <form action=".\?page=contactForm" id="contactForm" method="POST" class="form-horizontal">
 
   <div class="form-group <?php if($errors['contactName']): ?> has-error <?php endif; ?>">
     <label for="name" class="col-sm-2 control-label">Name</label>
-    <div class="col-sm-10">
+    <div class="col-sm-8">
       <input type="text" class="form-control" id="name" name="contactName" placeholder="First & Last Name"
       value="<?php echo $contactName; ?>">
       <div class="help-block"><?php echo $errors['contactName']; ?></div>
@@ -124,7 +126,7 @@
   </div>
     <div class="form-group <?php if($errors['contactEmail']): ?> has-error <?php endif; ?>">
     <label for="email" class="col-sm-2 control-label">Email</label>
-    <div class="col-sm-10">
+    <div class="col-sm-8">
       <input type="email" class="form-control" id="email" name="contactEmail" placeholder="Email Address"
       value="<?php echo $contactEmail; ?>">
       <div class="help-block"><?php echo $errors['contactEmail']; ?></div>
@@ -132,7 +134,7 @@
   </div>
     <div class="form-group <?php if($errors['contactSubject']): ?> has-error <?php endif; ?>">
     <label for="subject" class="col-sm-2 control-label">Subject</label>
-    <div class="col-sm-10">
+    <div class="col-sm-8">
       <input type="text" class="form-control" id="subject" name="contactSubject" placeholder="Message Subject"
       value="<?php echo $contactSubject; ?>">
       <div class="help-block"><?php echo $errors['contactSubject']; ?></div>
@@ -140,7 +142,7 @@
   </div>
     <div class="form-group <?php if($errors['contactMessage']): ?> has-error <?php endif; ?>">
     <label for="message" class="col-sm-2 control-label">Message</label>
-    <div class="col-sm-10">
+    <div class="col-sm-8">
      <textarea class="form-control" id="message" name="contactMessage" placeholder="Please type your message here..." rows="9"
      value="<?php echo $contactMessage; ?>"></textarea>
      <div class="help-block"><?php echo $errors['contactMessage']; ?></div>
@@ -148,7 +150,7 @@
   </div>
   <div class="form-group">
     <div class="socialMediaButtons">
-      <button type="submit" class="btn btn-default">Send Message</button>
+      <button type="submit" class="btn btn-default submit">Send Message</button>
     </div>
   </div>
 </form>

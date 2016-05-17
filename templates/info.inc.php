@@ -1,4 +1,4 @@
-
+<div class="info">
 
   
    <!-- Advertisers Section -->
@@ -45,5 +45,7 @@
             </div>
         </div>
     </section>
+
+</div>
 
     

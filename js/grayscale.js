@@ -8,7 +8,7 @@
 
 
 function collapseNavbar() {
-    if ($(".navbar").offset().top > 0)  {
+    if ($(".navbar").offset().top > 50)  {
         $(".navbar-fixed-top").addClass("top-nav-collapse");
        
     }  else {
