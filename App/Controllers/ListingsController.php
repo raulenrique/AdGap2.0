@@ -12,9 +12,14 @@ class ListingsController extends Controller
 {
 
 	public function index()
-	{
-		$listings = Listings::all("title");
-		$view = new ListingsView(['listings' => $listings]);
+	{	//User Input
+		$pageNumber = isset($_GET['p']) ? (int)$_GET['p'] : 1;
+		// $pageSize = isset($_GET['per-page']) && $_GET['per-page'] <= 50 ? (int)$_GET['page'] : 5;
+		$pageSize = 5;
+		$recordCount = Listings::count();
+
+		$listings = Listings::all("title",true, $pageNumber, $pageSize);
+		$view = new ListingsView(compact('listings', 'pageNumber', 'pageSize','recordCount'));
 		$view->render();
 	}
 

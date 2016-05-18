@@ -80,7 +80,7 @@
     <!-- Footer -->
     <footer>
         <div class="container text-center">
-            <p>Copyright &copy; R.Reyes Malqui (Kultura)<?php echo date("Y");?></p>
+            <p>&copy; Copyright R.Reyes Malqui (Kultura)<?php echo date("Y");?></p>
         </div>
     </footer>
 

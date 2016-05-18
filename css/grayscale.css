@@ -15,6 +15,7 @@ body {
     width: 100%;
     height: 100%;
     font-family: 'Bebas',sans-serif;
+    word-spacing: 5px;
     color: #000;
     background-color: #424242;
     margin: 0 0 30px;
@@ -24,6 +25,7 @@ body {
 p {
     font-family: 'Titillium Web', sans-serif;
 }
+
 
 h1,
 h2,
@@ -38,8 +40,16 @@ h6 {
     letter-spacing: 1px;
 }
 
-h3 {
-    margin: 25px 0 0 0; /*top left right bottom*/
+.list-title {
+    color: #4CAF50;
+    display: inline;
+    padding-right: 5px;
+}
+
+.list-price {
+    color: #424242;
+    display: inline;
+    font-size: large;
 }
 
 h1 {
@@ -89,19 +99,33 @@ img::-moz-selection {
     background: 0 0;
 }
 
+.breadcrumb {
+    background-color: #424242;
+}
+
+.pagination>li>a,.pagination>li>a:hover,.pagination>li>span,.pagination>li>span:hover, .pagination>.disabled>a, .pagination>.disabled>a:hover {
+    background-color: #424242;
+    color: white;
+}
+
+.pagination>.active>a , .pagination>.active>a:hover {
+    background-color: #4CAF50;
+    border-color: white;
+}
 
 
-
-#about, #users, #technology, #advertisersInfo, #technologyInfo, #individualListing, #allListings, #createListing, #registrationIndividual {
+ .listingsPage, #about, #users, #technology, #advertisersInfo, #technologyInfo, #individualListing, #allListings, #createListing, #registrationIndividual {
     background-color: #B0BEA9;
     color: #fff;
 }
 
-.info {
-    padding-top: 90px;
+.info, .listingsPage {
+    margin-top: 90px;
 }
 
-
+.listingsPage {
+    min-height: 100%;
+}
 
 #listingsHeader {
     background-color: black;
@@ -130,17 +154,31 @@ img::-moz-selection {
     padding-left: 0px;
 }
 
+
+.listings-left {
+float: left;
+text-align: left;
+width: 50%;
+}
+
+.listings-right {
+    float: left;
+    text-align: left;
+    width: 50%;
+}
+
 a {
-    color: #4CAF50;
+    color: white;
     -webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
+    font-size: medium;
 }
 
 a:hover,
 a:focus {
     text-decoration: none;
-    color: #E7F59E;
+    color: lemonchiffon;
 }
 
 .light {
@@ -153,6 +191,7 @@ a:focus {
 .navbar-custom {
     margin-bottom: 0;
    font-family: 'Bebas',sans-serif;
+   padding: 10px;
 }
 
 .navbar-custom .navbar-brand {
@@ -330,7 +369,7 @@ a:focus {
 
 .stats, .users {
     height: 250px;
-    margin: 5px; /*in between columns*/
+    margin: 5px; /*in between columns
     padding: 10px; /*Within divs*/
 }
 

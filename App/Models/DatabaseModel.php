@@ -66,7 +66,7 @@ abstract class DatabaseModel
 		}
 	}
 
-	public static function all($sortcolumn = "", $asc = true)
+	public static function all($sortcolumn = "", $asc = true, $pageNumber=null, $pageSize=null)
 	{
 		$models = [];
 
@@ -85,7 +85,15 @@ abstract class DatabaseModel
 				$query .= " DESC";
 			}
 		}
+		//Positioning (the limit) $pageNumber - current page user tryna access
+		if ($pageSize > 0 && $pageNumber > 0) {
+			$firstRecord = ($pageNumber * $pageSize) - $pageSize;
+			//$firstRecord = ($pageNumber >1) ? ($page * $perPage) - $perPage : 0;
+			$query .= " LIMIT " .$firstRecord." , ".$pageSize;
+		}
+		//Query to pull results in 
 		$statement = $db->prepare($query);
+		//var_dump($statement);
 		$statement->execute();
 
 		while($record = $statement->fetch(PDO::FETCH_ASSOC)){
@@ -97,6 +105,18 @@ abstract class DatabaseModel
 		
 		return $models;
 		// var_dump($models);
+	}
+
+	//Total
+	public static function count() 
+	{
+		$db = static::getDatabaseConnection();
+		$query = "SELECT count(id) FROM " . static::$tableName;
+
+		$statement = $db->prepare($query);
+		$statement->execute();
+		$result = $statement->fetchColumn();
+		return $result; 
 	}
 
 	public function find($id) 

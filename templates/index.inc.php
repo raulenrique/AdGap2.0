@@ -110,7 +110,7 @@
                 </p>
             </div>
             <!-- Map Section -->
-            <div class="col-lg-offset-2 col-sm-8 col-md-offset-2"><div id="map"></div></div>
+            <div class="col-lg-offset-2 col-sm-8 col-md-offset-2 col-sm-offset-2"><div id="map" style="background-color:#424242;"></div></div>
             </div>
             
 
