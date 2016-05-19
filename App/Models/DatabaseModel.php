@@ -175,6 +175,7 @@ abstract class DatabaseModel
 		$db = static::getDatabaseConnection();
 
 		$columns = static::$columns;
+		
 
 		unset($columns[array_search('id', $columns)]);
 

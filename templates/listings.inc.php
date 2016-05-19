@@ -43,10 +43,10 @@
           <?php else: ?>
           <p>There are currently no listings to show you probably cause they've all been sold ;). Check back soon!!! </p>
           <?php endif; ?>
-            <?php if(static::$auth->isRegisteredUser()): ?>
+            <?php if(static::$auth->isAdmin() || static::$auth->isRegisteredUser())  : ?>
             <div class="form-group">
                   <div class="createListinga">
-                    <a href=".\?page=listing.create" class="btn btn-listing"><span class="glyphicon glyphicon-plus"></span> Create Listing</a>
+                    <a href=".\?page=listing.create" class="btn btn-create"><span class="glyphicon glyphicon-plus"></span> Create Listing</a>
                   </div>
               <?php endif; ?>
 

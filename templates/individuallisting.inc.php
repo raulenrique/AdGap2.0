@@ -16,9 +16,9 @@
                  <p><?= $listing->description; ?></p>
                   <p><?= $listing->url; ?></p>
                 
-                <?php if (static::$auth->isRegisteredUser()): ?>
+                <?php if ((static::$auth->isAdmin()) || ($permit)): ?>
                 <p>
-                <a href=".\?page=listing.edit&amp;id=<?= $listing->id; ?>" class="btn btn-default">
+                <a href=".\?page=listing.edit&amp;id=<?= $listing->id; ?>" class="btn btn-edit">
                 <span class="glyphicon glyphicon-pencil"></span> Edit Listing</a>
               </p>
                <?php endif; ?>

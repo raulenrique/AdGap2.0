@@ -26,6 +26,10 @@ p {
     font-family: 'Titillium Web', sans-serif;
 }
 
+.form-control {
+    word-spacing: 5px;
+}
+
 
 h1,
 h2,
@@ -37,6 +41,7 @@ h6 {
     text-transform: uppercase;
     font-family:'Bebas',sans-serif;
     letter-spacing: 5px;
+    word-spacing: 5px;
     letter-spacing: 1px;
 }
 
@@ -45,6 +50,7 @@ h6 {
     display: inline;
     padding-right: 5px;
 }
+
 
 .list-price {
     color: #424242;
@@ -78,6 +84,7 @@ footer p {
     margin: 0;
     color: black;
      font-family: 'Bebas',sans-serif;
+     word-spacing: 5px;
      text-align: center;
 }
 
@@ -391,29 +398,29 @@ a:focus {
 }
 
 
-.btn-listing,.submit {
+.btn-listing,.submit, .btn-create, .btn-edit {
     border: 1px solid #4CAF50;
     color: #fff;
     background-color: #4CAF50;
     font-size: 25px;
     word-spacing: 8px;
+    
 }
 
-.btn-listing,
-{
-width: 63%;
+
+.submit,.btn-create {
+width: 260px;
 }
 
-.submit
-{
-width: 40%;
-}
 
 .btn-danger {
     border: 1px solid #d9534f;
     color: #fff;
     background-color: #d9534f;
     font-size: 25px;
+}
+
+.btn-danger, .btn-listing {
     width: 63%;
 }
 
@@ -475,8 +482,8 @@ width: 40%;
     .intro-text {
         font-size: 26px;
         line-height: 50px;
-        word-spacing: 10px;
-        
+        word-spacing: 5px;
+        font-style: justify;
 
     }
 
@@ -520,15 +527,11 @@ width: 40%;
 
 @media(max-width:768px) {
 
-    .navbar-custom.top-nav-collapse {
+    .navbar-custom.top-nav-collapse , .navbar-custom, .navbar-custom.top-nav-collapse>li,.navbar-custom.top-nav-collapse>ul {
         background-color: white;
     }
 
-    .navbar-custom {
-        background-color: white;
-        
-    }
-
+    
          .navbar-custom a {
         color: black;
     }

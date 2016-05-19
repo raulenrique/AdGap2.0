@@ -1,5 +1,6 @@
 <?php  
      $errors = $listing->errors; 
+     
      $verb = ( $listing->id ? "Edit" : "Create");
      if($listing->id){
       $submitAction = ".\?page=listing.update";
@@ -24,9 +25,11 @@
               <?php if($listing->id): ?>
                  <input type="hidden" name='id' value="<?= $listing->id?>">
               <?php endif; ?>
+
               <h2><?= $verb; ?> Listing</h2>
 
-              
+              <input type="hidden" name='user_id' value="<?= $user->id?>">
+
               <div class="form-group <?php if($errors['category']): ?> has-error <?php endif; ?>">
                 <label for="category" class="col-sm-2 control-label">Category</label>
                 <div class="col-sm-10">

@@ -6,7 +6,7 @@ class Listings extends DatabaseModel
 {
 	
 	protected static $tableName = "listings";
-	protected static $columns = ['id', 'category', 'title','url', 'buyNowPrice', 'location', 'description'];
+	protected static $columns = ['id', 'user_id','category', 'title','url', 'buyNowPrice', 'location', 'description'];
 	protected static $validationRules = [
 									"category"    => "minlength:1",
 									"title"       => "minlength:1",

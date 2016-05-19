@@ -49,6 +49,7 @@ class AuthenticationService
 			}
 			return false;
 	}
+
 	public function check()
 	{
 		return(static::$currentUser ? true : false);
@@ -65,31 +66,45 @@ class AuthenticationService
 		}
 		return false;
 	}
+
 	public function loginUser(User $user)
 	{
 		$_SESSION['AuthenticationService']['currentUser'] = $user;
 		static::$currentUser = $user;
 	}
+
 	public function user()
 	{
 		return static::$currentUser;
 	}
+
 	public function logout()
 	{
 		unset($_SESSION['AuthenticationService']);
 		static::$currentUser = null;
 	}
-	
+
 	public function isRegisteredUser()
 	{
 		if($this->check()){
 			return static::$currentUser->role === 'user';
 		}
 	}
+
 	public function mustBeRegisteredUser()
 	{
-		if( ! $this->isregisteredUser()) {
+		if(( ! static::$currentUser->role === 'admin') && (! static::$currentUser->role === 'user')){
 			throw new InsufficientPrivilegesException();
 		}
 	}
+
+	public function isAdmin()
+	{
+		if($this->check()){
+			return static::$currentUser->role === 'admin';
+		}
+	}
+
+
+
 }

@@ -26,21 +26,30 @@ class ListingsController extends Controller
 	public function show()
 	{
 		$listing = new Listings((int)$_GET['id']);
-		$view = new IndividualListingView(['listing' => $listing]);
+		$user = static::$auth->user();
+		if($listing->user_id == $user->id) {
+			$permit = true;
+		} else {
+			$permit = false;
+		}
+		$view = new IndividualListingView(compact('listing', 'permit'));
 		$view->render();
 	}
 
 	public function create()
-	{
-		static::$auth->mustBeLister();
+	{	
+		static::$auth->isAdmin();
+		static::$auth->mustBeRegisteredUser();
+		$user = static::$auth->user();
 		$listing = $this->getFormdata();
-		$view = new ListingCreateView(['listing' => $listing]);
+		$view = new ListingCreateView(compact('listing', 'user'));
 		$view->render();
 	}
 
 	public function store()
 	{
-		static::$auth->mustBeLister();
+		static::$auth->isAdmin();
+		static::$auth->mustBeRegisteredUser();
 		$listing = new Listings($_POST);
 		
 		if (! $listing->isValid()) {
@@ -54,15 +63,19 @@ class ListingsController extends Controller
 
 	public function edit()
 	{
-		static::$auth->mustBeLister();
+		static::$auth->isAdmin();
+		static::$auth->mustBeRegisteredUser();
+		$user = static::$auth->user();
+
 		$listing = $this->getFormData($_GET['id']);
-		$view = new ListingCreateView(compact('listing'));
+		$view = new ListingCreateView(compact('listing', 'user'));
 		$view->render();
 	}
 
 	public function update()
 	{
-		static::$auth->mustBeLister();
+		static::$auth->isAdmin();
+		static::$auth->mustBeRegisteredUser();
 		$listing = new Listings($_POST['id']);
 		$listing->processArray($_POST);
 		var_dump($listing);
@@ -76,8 +89,9 @@ class ListingsController extends Controller
 	}
 
 	public function destroy()
-	{
-		static::$auth->mustBeLister();
+	{	
+		static::$auth->isAdmin();
+		static::$auth->mustBeRegisteredUser();
 		Listings::destroy($_POST['id']);
 		header("Location: .\?page=listings");
 	}
