@@ -84,8 +84,12 @@
 
               <div class="form-group <?php if($errors['tags']): ?> has-error <?php endif; ?>">
                  <label for="tags" class="col-sm-4 col-md-2 control-label">Tags </label>
-                 <div class="col-sm-8 col-md-10">
-                <?= $listing->tags; ?>
+                 <div class="col-sm-10">
+                 <div id="tags" class="form-control">
+                  <script type="text/javascript">
+                   var inputTags = "<?= $listing->tags; ?>";
+                   </script>
+                   </div>
                  <div class="help-block"><?php echo $errors['tags']; ?></div>
                  </div>
               </div>  

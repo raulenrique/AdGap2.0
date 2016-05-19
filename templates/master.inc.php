@@ -99,6 +99,12 @@
     <!-- Custom Theme JavaScript -->
     <script src="js/grayscale.js"></script>
 
+    <!-- Taggle JavaScript -->
+    <script src="js/taggle.min.js"></script>
+
+    <!-- Project JavaScript -->
+    <script src="js/main.js"></script>
+
 </body>
 
 </html>
