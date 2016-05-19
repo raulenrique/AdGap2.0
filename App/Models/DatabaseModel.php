@@ -41,7 +41,7 @@ abstract class DatabaseModel
 		}
 	}
 
-	private static function getDatabaseConnection() 
+	protected static function getDatabaseConnection() 
 	{
 		if (! self::$db){
 			$dsn = 'mysql:host=localhost;dbname=theadgap;charset=utf8';
@@ -103,6 +103,51 @@ abstract class DatabaseModel
 
 		}
 		
+		return $models;
+		// var_dump($models);
+	}
+
+	public static function allBy($column, $value, $sortcolumn = "", $asc = true, $pageNumber=null, $pageSize=null)
+	{
+		$models = [];
+
+		$db = static::getDatabaseConnection();
+
+		$query ="SELECT " .implode("," , static::$columns). " FROM " . static::$tableName;
+
+		if( ! array_search($column, static::$columns)){
+			throw new UnexpectedValueException("Property $column is not found in the column.");
+		}
+
+		$query .= " WHERE $column =:value";
+
+		if($sortcolumn){
+			if( ! array_search($sortcolumn, static::$columns)){
+				throw new UnexpectedValueException("Property $sortcolumn is not found in the columns array.");
+			}
+			$query .= " ORDER BY " .$sortcolumn;
+			if($asc){
+				$query .= " ASC";
+			} else {
+				$query .= " DESC";
+			}
+		}
+
+		if($pageSize > 0  && $pageNumber > 0){
+			$firstRecord = ($pageSize * $pageNumber) - $pageSize;
+			$query .= " LIMIT " .$firstRecord." , ".$pageSize;
+		}
+		$statement = $db->prepare($query);
+		$statement->bindValue(":value" , $value);
+		$statement->execute();
+
+		while($record = $statement->fetch(PDO::FETCH_ASSOC)){
+			$model = new static();
+			$model->data = $record;
+			array_push($models, $model);
+
+		}
+
 		return $models;
 		// var_dump($models);
 	}
@@ -225,7 +270,7 @@ abstract class DatabaseModel
 		$query .= " WHERE id =:id";
 
 		$statement = $db->prepare($query);
-		var_dump($statement);
+		// var_dump($statement);
 		foreach (static::$columns as $column) {
 			if ($column === "password") {
 				$this->$column = password_hash($this->$column, PASSWORD_DEFAULT);
@@ -293,6 +338,14 @@ abstract class DatabaseModel
 						$valid = false;
 						$this->errors[$column] = "This email is already in use";
 						break;
+					case 'exists':
+						try {
+							$record = new $value($this->$column);
+						} catch (ModelNotFoundException $e) {
+							$valid = false;
+							$this->errors[$column] = "This value does not exist.";
+							break;
+						}
 				}
 			}
 			

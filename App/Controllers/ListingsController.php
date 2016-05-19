@@ -2,8 +2,9 @@
 
 namespace App\Controllers;
 
-use App\Views\ListingsView;
+use App\Models\Comment;
 use App\Models\Listings;
+use App\Views\ListingsView;
 use App\Views\IndividualListingView;
 use App\Views\ListingCreateView;
 
@@ -26,13 +27,18 @@ class ListingsController extends Controller
 	public function show()
 	{
 		$listing = new Listings((int)$_GET['id']);
+		$newcomment = $this->getCommentFormData();
+		$comments = $listing->comments();
+		$tags = $listing->getTags();
+		
 		$user = static::$auth->user();
 		if($listing->user_id == $user->id) {
 			$permit = true;
 		} else {
 			$permit = false;
 		}
-		$view = new IndividualListingView(compact('listing', 'permit'));
+
+		$view = new IndividualListingView(compact('listing', 'permit', 'newcomment', 'comments','tags'));
 		$view->render();
 	}
 
@@ -51,6 +57,10 @@ class ListingsController extends Controller
 		static::$auth->isAdmin();
 		static::$auth->mustBeRegisteredUser();
 		$listing = new Listings($_POST);
+
+		if(is_array($listing->tags)){
+			$listing->tags = implode(",", $listing->tags);
+		}
 		
 		if (! $listing->isValid()) {
 			$_SESSION['listing.create'] = $listing;
@@ -58,6 +68,7 @@ class ListingsController extends Controller
 			exit();
 		}
 		$listing->save();
+		$listing->saveTags();
 		header("Location: .\?page=listing&id=" . $listing->id);
 	}
 
@@ -68,6 +79,7 @@ class ListingsController extends Controller
 		$user = static::$auth->user();
 
 		$listing = $this->getFormData($_GET['id']);
+		$loadTags();
 		$view = new ListingCreateView(compact('listing', 'user'));
 		$view->render();
 	}
@@ -78,14 +90,19 @@ class ListingsController extends Controller
 		static::$auth->mustBeRegisteredUser();
 		$listing = new Listings($_POST['id']);
 		$listing->processArray($_POST);
-		var_dump($listing);
+		
+		if(is_array($listing->tags)){
+			$listing->tags = implode(",", $listing->tags);
+		}
+
 		if(! $listing->isValid()){
 			$_SESSION['listing.create'] = $listing;
 			header("Location: .\?page=listing.edit&id=".$_POST['id']);
 			exit();
 		}
 		$listing->save();
-		header("Location: .\?page=listing&id=" . $listing->id);
+		$listing->saveTags();
+		// header("Location: .\?page=listing&id=" . $listing->id);
 	}
 
 	public function destroy()
@@ -105,5 +122,15 @@ class ListingsController extends Controller
 				$listing = new Listings((int)$id);
 		}
 		return $listing;
+	}
+
+	public function getCommentFormData($id = null){
+		if(isset($_SESSION['comment.form'])){
+			$newcomment = $_SESSION['comment.form'];
+			unset($_SESSION['comment.form']);
+		} else {
+			$newcomment = new Comment((int)$id);
+		}
+		return $newcomment;
 	}
 }

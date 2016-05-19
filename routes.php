@@ -110,6 +110,13 @@ try{
 				$controller = new ContactFormController();
 				$controller->show();
 				break;
+
+			case "comment.create":
+
+	            $controller = new CommentsController();
+	            $controller->create();
+
+            break;
 				
 			}
 			

@@ -527,13 +527,35 @@ width: 260px;
 
 @media(max-width:768px) {
 
-    .navbar-custom.top-nav-collapse , .navbar-custom, .navbar-custom.top-nav-collapse>li,.navbar-custom.top-nav-collapse>ul {
+    .navbar-custom, .container>.navbar-collapse{
         background-color: white;
     }
 
+    .container>.navbar-collapse{
+        text-align: center;
+        text-align: -webkit-center;
+    }
     
-         .navbar-custom a {
+    .container>.navbar-header {
+        text-align: center;
+        margin-right: 0px;
+    }
+
+     .navbar-custom a {
         color: black;
+    }
+
+   .navbar-custom .nav li a:hover{
+        background-color: #4CAF50;
+    }
+
+    .navbar-nav {
+        margin:inherit;
+    }
+    
+    .container {
+        padding-left: 0;
+        padding-right: 0;
     }
 
 

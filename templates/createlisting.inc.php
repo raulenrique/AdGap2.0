@@ -80,7 +80,15 @@
                      <textarea class="form-control" id="description" name="description" rows="9" placeholder="A description of the listing"><?php echo $listing->description; ?></textarea>
                     <div class="help-block"><?php echo $errors['description']; ?></div>
                   </div>
-                </div>  
+              </div> 
+
+              <div class="form-group <?php if($errors['tags']): ?> has-error <?php endif; ?>">
+                 <label for="tags" class="col-sm-4 col-md-2 control-label">Tags </label>
+                 <div class="col-sm-8 col-md-10">
+                <?= $listing->tags; ?>
+                 <div class="help-block"><?php echo $errors['tags']; ?></div>
+                 </div>
+              </div>  
 
               <div class="form-group">
                 <div class="createListinga">
